@@ -37,6 +37,7 @@ GEM
       rack
     sanitize (2.0.6)
       nokogiri (>= 1.4.4)
+    settingslogic (2.0.9)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -51,3 +52,4 @@ PLATFORMS
 
 DEPENDENCIES
   gollum
+  settingslogic

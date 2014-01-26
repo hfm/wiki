@@ -1,3 +1,4 @@
 /.bundle
 /.config
 /vendor/bundle
+auth.yml
