@@ -1,3 +1,3 @@
 # Memorandum
 
-Takahiro Okumura
+Okumura Takahiro
