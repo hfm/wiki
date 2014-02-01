@@ -13,6 +13,7 @@
 apnicの国別に振り分けられたIPアドレスのリストを取ってくる
 
  * http://ftp.apnic.net/stats/apnic/delegated-apnic-extended-latest
+ * http://ftp.apnic.net/stats/ripe-ncc/delegated-ripencc-extended-latest
 
 中にはこんな感じのがリストになってる、
 （asmやipv6もあるが今回は割愛。）
