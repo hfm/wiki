@@ -3,7 +3,7 @@ APP_PATH = "./"
 worker_processes 1
 working_directory APP_PATH
 
-listen "unix:#{APP_PATH}/sockets/unicorn.sock", :backlog => 1024
+listen "unix:/var/run/unicorn_wiki.sock", :backlog => 1024
 
 pid "/var/run/unicorn.pid"
 
