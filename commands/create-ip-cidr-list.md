@@ -56,10 +56,10 @@ apnic|CN|ipv4|1.0.2.0|512|20110414|allocated|A92E1062
 512個という値をCIDRに変換するには2が底のlogを取れば良い。
 
 $$
-\begin{eqnarray}
-2^{n} & = & 512 \\
+\\begin{eqnarray}
+2^{n} & = & 512 \\\\
 n \log_{2}(2) & = & \log_{2}(512) = \log_{2}(2^9) = 9
-\end{eqnarray}
+\\end{eqnarray}
 $$
 
 こんな感じ。
