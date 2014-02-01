@@ -33,11 +33,13 @@ $ bundle exec unicorn -c config/unicorn.rb -D
 
 gitのhookを利用しようと思ったけど、gollumから更新すると何故か動いてくれないのでcronかwheneverあたりで頑張る予定。
 
-以下のコードを1時間とぐらいに走らせればとりあえず動くには動く。ひどいけど。
+以下のコードを1時間とぐらいに走らせればとりあえず動くには動く。
+ロジックもへったくれも無いけど動けば良しとしよう。
 
 ```rb
 require 'git'
 
-repo = Git.init
+PATH = File.join(File.dirname(__FILE__), "..")
+repo = Git.open(PATH)
 repo.push(repo.remote('origin'))
 ```
