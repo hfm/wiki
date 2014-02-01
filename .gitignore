@@ -2,3 +2,5 @@
 /.config
 /vendor/bundle
 auth.yml
+*.log
+Gemfile.lock
