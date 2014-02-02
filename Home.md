@@ -1,5 +1,0 @@
-# Memorandum
-
-## Author
-
-Okumura Takahiro
