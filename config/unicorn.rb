@@ -1,6 +1,6 @@
-APP_PATH = "./"
+APP_PATH = "/var/www/wiki"
 
-worker_processes 1
+worker_processes 2
 working_directory APP_PATH
 
 listen "unix:/var/run/unicorn_wiki.sock", :backlog => 1024
