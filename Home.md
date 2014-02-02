@@ -6,4 +6,4 @@ Okumura Takahiro
 
 ## Mail
 
-hfm.garden<a>gmail.com
+hfm.garden \<a\> gmail.com
