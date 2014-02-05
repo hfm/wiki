@@ -1,4 +1,4 @@
-# FreeBSD 10-RELEASE用 packer
+# Packer for FreeBSD 10
 
 ## VirtualBox用 provision shell
 
