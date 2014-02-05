@@ -1,8 +1,8 @@
 # Packer for FreeBSD 10
 
-## VirtualBox用 provision shell
+## VirtualBox用 provision scripts
 
-VirtualBoxにFreeBSDをつっこむにあたって、provision shellをどうすればいいか悩んでいたら、以下の公式ドキュメントを発見。
+VirtualBoxにFreeBSDをつっこむにあたって、provision scriptsをどうすればいいか悩んでいたら、以下の公式ドキュメントを発見。
 
 * [21.2. FreeBSD as a Guest OS #VirtualBox™ Guest Additions on a FreeBSD Guest](http://www.freebsd.org/doc/handbook/virtualization-guest.html#virtualization-guest-virtualbox-guest-additions)
 
