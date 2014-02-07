@@ -18,6 +18,14 @@ $ rpm -ql ImageMagick | grep bin
 ```
 
 ## animate
+
+> _man 1 animate_
+> 
+> animates an image or image sequence on any X server.
+
+X server上で複数の画像をアニメーションで表示させる。  
+`-delay`と`-loop`をよく使う印象。どのくらいのスピードと繰り返し回数の指定。
+
 ## compare
 ## composite
 ## conjure
