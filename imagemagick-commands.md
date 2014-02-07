@@ -30,6 +30,13 @@ X server上で複数の画像をアニメーションで表示させる。
 ## composite
 ## conjure
 ## convert
+
+### 真っ黒なイメージを生成する
+
+```sh
+convert -size 100x100 xc:black black.png
+```
+
 ## display
 ## identify
 
