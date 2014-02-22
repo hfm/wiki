@@ -1,10 +1,16 @@
 # `$HOME/vagrant.d`
 
-packerで箱を作っては中を試している場合、`$HOME/vagrant.d`の中身を確認すること。
-一度、Vagrantfileにnameを付けて`vagrant up`してしまうと、先の中にキャッシュされてしまう。
+## `$HOME/vagrant.d`の落とし穴
 
-一度キャッシュされると、同じ名前を使って`vagrant up`する限り、そのキャッシュが使われてしまい、指定したboxが有効になっていないことがある。
-気になったら、以下のようにbox listを出してみよう。
+packerでboxを作る際は、`$HOME/vagrant.d`の中身をちゃんと確認すること。
+Vagrantfileに`config.box`名をつけて`vagrant up`すると、`$HOME/vagrant.d/box`にboxデータがキャッシュされる。
+
+実はこれが罠で、packerで何度boxを作りなおしても、同じbox名のまま`vagrant up`しても、そのキャッシュが使われてしまう。
+これは`vagrant destroy`したとしても、キャッシュが残る以上、新たに作成したboxは有効にならない。
+
+## box list
+
+おかしいなと思ったら、box listを出してみよう。
 
 ```console
 $ vagrant box list
@@ -20,6 +26,8 @@ FreeBSD-10.0-i386               (virtualbox)
 FreeBSD-9.2-amd64               (virtualbox)
 centos65-x86_64-20131205        (virtualbox)
 ```
+
+## box remove
 
 `vagrant box remove <name>`で削除できるが、ずっと残っていても重たくて邪魔なので全部一気に削除することもある。
 そういう時は次みたいなコマンドで一気に消せばいい。
