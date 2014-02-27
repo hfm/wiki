@@ -16,4 +16,4 @@ Deprecated, see purge.url instead.
 varnishadm -T 127.0.0.1:6082 -S /etc/varnish/secret purge.url .
 ```
 
-centos6でvarnishを入れると、`/etc/sysconfig/varnishの起動オプションではデフォルトで`-S /etc/varnish/secret`を読み込んで起動するので、varnishadmを操作するときは必ずsecretファイルを読み込むようにしないとauthエラーが出てしまうようだ。
+centos6でvarnishを入れると、`/etc/sysconfig/varnish`の起動オプションではデフォルトで `-S /etc/varnish/secret` を読み込んで起動するので、varnishadmを操作するときは必ずsecretファイルを読み込むようにしないとauthエラーが出てしまうようだ。
