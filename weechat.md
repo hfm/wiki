@@ -7,7 +7,18 @@
 
 入れたやつ：
 
- * 
+ * buffers.pl
+ * chanmon.pl
+ * expand_url.pl
+ * highmon.pl
+ * iset.pl
+ * kernel.pl
+ * autoconnect.py
+ * autojoin.py
+ * go.py
+ * grep.py
+ * notification_center.py
+ * beep.pl
 
 ## サーバ追加
 
