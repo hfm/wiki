@@ -13,7 +13,7 @@
 
 ```
 /server add <server> <hostname>/+<port> -ssl -password=<znc.username>/<znc.network>:<znc.password> -autoconnect
-/set irc.server.BNC.ssl_verify off
+/set irc.server.<server>.ssl_verify off
 /save
 /connect <server>
 ```
