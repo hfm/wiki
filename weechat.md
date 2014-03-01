@@ -7,19 +7,22 @@
 
 入れたやつ：
 
- * buffers.pl
- * chanmon.pl
- * expand_url.pl
- * highmon.pl
- * iset.pl
- * kernel.pl
- * autoconnect.py
- * autojoin.py
- * go.py
- * grep.py
- * notification_center.py
- * beep.pl
+ * buffers.pl ...
+ * chanmon.pl ...
+ * expand_url.pl ...
+ * highmon.pl ...
+ * iset.pl ...
+ * autoconnect.py ...
+ * go.py ...
+ * notification_center.py ...
+ * beep.pl ...
 
+## 設定
+
+join/part/quit を非表示にする
+```
+/filter add joinquit * irc_join,irc_part,irc_quit *
+```
 ## サーバ追加
 
 ```
