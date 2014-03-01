@@ -7,27 +7,29 @@
 
 入れたやつ：
 
- * buffers.pl ...
- * chanmon.pl ...
- * expand_url.pl ...
- * highmon.pl ...
- * iset.pl ...
+ * buffers.pl ... 便利なバッファ
+ * chanmon.pl ... 複数チャンネルをシングルバッファ/バーに表示できる
+ * expand_url.pl ... 短縮URLを展開してくれる。URI::Findが要る
+ * highmon.pl ... ハイライトキーワードのみを表示してくれる
+ * iset.pl ... weechatの設定一覧をざっと見れたり、編集できたりして便利
  * autoconnect.py ...
- * go.py ...
- * notification_center.py ...
- * beep.pl ...
+ * go.py ... 簡単にチャンネル移動出来る
+ * beep.pl ... beep音
 
 ## 設定
 
-freenodeを削除
+初めから入っているfreenodeを削除
+
 ```
 /server del freenode
 ```
 
 join/part/quit を非表示にする
+
 ```
 /filter add joinquit * irc_join,irc_part,irc_quit *
 ```
+
 ## サーバ追加
 
 ```
