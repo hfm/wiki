@@ -19,6 +19,11 @@
 
 ## 設定
 
+freenodeを削除
+```
+/server del freenode
+```
+
 join/part/quit を非表示にする
 ```
 /filter add joinquit * irc_join,irc_part,irc_quit *
