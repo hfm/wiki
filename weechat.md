@@ -24,9 +24,11 @@
 /server del freenode
 ```
 
-join/part/quit を非表示にする (smart_filterよりこっちのが好き)
+join/part/quit を非表示にする
 
 ```
+/set irc.look.smart_filter on 
+/filter add irc_smart * irc_smart_filter *
 /filter add joinquit * irc_join,irc_part,irc_quit *
 ```
 
