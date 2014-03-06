@@ -2,8 +2,8 @@
 
 前提として、以下のように各MySQLをインストールした。
 
-```console
-# mysql-build/bin/mysql-build -v <version> ~/mysql/<version>
+```sh
+mysql-build/bin/mysql-build -v $VERSION ~/mysql/$VERSION
 ```
 
 ## DATADIR
