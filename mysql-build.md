@@ -20,4 +20,3 @@ show variables like "datadir";
 | 5.1.73   | /home/vagrant/mysql/5.1.73/var/  |
 | 5.5.36   | /home/vagrant/mysql/5.5.36/data/ |
 | 5.6.16   | /home/vagrant/mysql/5.6.16/data/ |
-```
