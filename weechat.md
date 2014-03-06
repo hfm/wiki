@@ -47,7 +47,12 @@ highlight
 /connect <server>
 ```
 
-## ハマったこと
+## Tips
+
+### チャットウィンドウだけコピペしたい for iTerm2
+
+option + commandを押して矩形選択モードを使う。
+tmux上で起動しても大丈夫。
 
 ### keybindについて
 
