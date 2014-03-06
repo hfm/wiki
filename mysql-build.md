@@ -1,5 +1,11 @@
 # mysql-buildメモ
 
+前提として、以下のように各MySQLをインストールした。
+
+```console
+# mysql-build/bin/mysql-build -v <version> ~/mysql/<version>
+```
+
 ## DATADIR
 
 `/etc/my.cnf`の無い状態で`mysql_install_db`を実行すると、以下のようなDATADIRになることがわかった。
