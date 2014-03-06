@@ -32,6 +32,12 @@ join/part/quit を非表示にする
 /filter add joinquit * irc_join,irc_part,irc_quit *
 ```
 
+highlight
+
+```
+/set weechat.look.highlight "$nick,おっくん"
+```
+
 ## サーバ追加
 
 ```
