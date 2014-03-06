@@ -3,7 +3,7 @@
 前提として、以下のように各MySQLをインストールした。
 
 ```sh
-mysql-build/bin/mysql-build -v $VERSION ~/mysql/$VERSION
+mysql-build/bin/mysql-build -v $VERSION "~/mysql/$VERSION"
 ```
 
 ## DATADIR
