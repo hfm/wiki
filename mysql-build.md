@@ -35,3 +35,8 @@ show variables like "datadir";
 
 文字コードが違ったりすると上記のようなエラーが起こる。
 my.cnfの設定や`show variables`でチェックする。
+
+### [ERROR] Error reading packet from server: Could not find first log file name in binary log index file ( server_errno=1236)
+
+bin-logの名前が間違っていて見つからない。
+slaveの`MASTER_LOG_FILE`を見直す。
