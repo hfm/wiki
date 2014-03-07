@@ -31,6 +31,10 @@ show variables like "datadir";
 
 ## Error
 
+### [ERROR] Slave I/O: error connecting to master 'repl@192.168.128.4:3306' - retry-time: 60  retries: 86400, Error_code: 2013
+
+iptabelsを見なおしてみよう。
+
 ### [ERROR] The slave I/O thread stops because master and slave have different values for the COLLATION_SERVER global variable. The values must be equal for replication to work
 
 文字コードが違ったりすると上記のようなエラーが起こる。
