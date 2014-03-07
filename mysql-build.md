@@ -44,3 +44,10 @@ my.cnfの設定や`show variables`でチェックする。
 
 bin-logの名前が間違っていて見つからない。
 slaveの`MASTER_LOG_FILE`を見直す。
+
+### [ERROR] /home/vagrant/mysql/5.5.36/bin/mysqld: unknown variable 'default-character-set=ujis'
+
+mysql 5.5からは`default-character-set`は`[mysqld]`から廃止されている。
+
+代わりに`character-set-server = ujis`を使う。
+clientやdumpではdefault...は使える。
