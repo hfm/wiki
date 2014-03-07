@@ -26,3 +26,12 @@ show variables like "datadir";
 | 5.1.73   | /home/vagrant/mysql/5.1.73/var/  |                                                    |
 | 5.5.36   | /home/vagrant/mysql/5.5.36/data/ |                                                    |
 | 5.6.16   | /home/vagrant/mysql/5.6.16/data/ |                                                    |
+
+# Troubleshoot
+
+## Error
+
+### [ERROR] The slave I/O thread stops because master and slave have different values for the COLLATION_SERVER global variable. The values must be equal for replication to work
+
+文字コードが違ったりすると上記のようなエラーが起こる。
+my.cnfの設定や`show variables`でチェックする。
