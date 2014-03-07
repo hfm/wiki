@@ -18,11 +18,11 @@ show variables like "datadir";
 
 ### 表
 
-| Versions | Value                            |
-|----------|----------------------------------|
-| 4.0.30   | /home/vagrant/mysql/4.0.30/var/  |
-| 4.1.25   | /home/vagrant/mysql/4.1.25/var/  |
-| 5.0.96   | /home/vagrant/mysql/5.0.96/var/  |
-| 5.1.73   | /home/vagrant/mysql/5.1.73/var/  |
-| 5.5.36   | /home/vagrant/mysql/5.5.36/data/ |
-| 5.6.16   | /home/vagrant/mysql/5.6.16/data/ |
+| Versions | Value                            | Note                                               |
+|----------|----------------------------------|----------------------------------------------------|
+| 4.0.30   | /home/vagrant/mysql/4.0.30/var/  |                                                    |
+| 4.1.25   | /home/vagrant/mysql/4.1.25/var/  |                                                    |
+| 5.0.96   | /home/vagrant/mysql/5.0.96/var/  | Datadir `5.0.96/var/my.cnf` is deprecated. Move to `5.0.96/my.cnf` |
+| 5.1.73   | /home/vagrant/mysql/5.1.73/var/  |                                                    |
+| 5.5.36   | /home/vagrant/mysql/5.5.36/data/ |                                                    |
+| 5.6.16   | /home/vagrant/mysql/5.6.16/data/ |                                                    |
