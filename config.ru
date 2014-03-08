@@ -23,6 +23,8 @@ Precious::App.set(:gollum_path, gollum_path)
 Precious::App.set(:default_markup, :markdown)
 Precious::App.set(:wiki_options, {
   :universal_toc => false,
+  :live_preview  => false,
   :mathjax       => true,
+  :user_icons    => 'gravatar',
 })
 run Precious::App
