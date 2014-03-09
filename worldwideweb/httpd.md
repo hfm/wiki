@@ -43,3 +43,5 @@
 |        |  <------- ACK  |        |
 +--------+                +--------+
 ```
+
+Persistent Connectionsでは、`Establish TCP Connection`から`Finish TCP Connection`の間に複数のHTTPリクエスト/レスポンスが発生する。
