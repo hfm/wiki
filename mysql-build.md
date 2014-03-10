@@ -31,6 +31,11 @@ show variables like "datadir";
 
 ## Error
 
+### /etc/my.cnf
+
+mysql-buildは`/etc/my.cnf`を設置しない。
+しかし、CentOS 6で`yum update -y`を実行すると、postfix, そしてその依存関係であるmysql-libsがインストールされ、自動的に`/etc/my.cnf`が設置されてしまう。
+
 ### [ERROR] Slave I/O: error connecting to master 'repl@192.168.128.4:3306' - retry-time: 60  retries: 86400, Error_code: 2013
 
 iptabelsを見なおしてみよう。
