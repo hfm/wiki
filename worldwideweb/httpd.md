@@ -24,7 +24,17 @@
 
 持続的接続 (Persistent Connections) は、どちらかが明示的に接続切断しない限り、TCP接続を繋ぎ続ける。
 
-### TCP接続
+ * アドバンテージ
+   1. TCPコネクションの接続と切断のオーバヘッドを減らすことで、ルータやホスト (クライアント、サーバ、プロキシ、ゲートウェイ、トンネルやキャッシュ) のCPU時間を節約し、ホスト中のTCPプロトコル操作によるメモリ使用を節約できる（負荷の軽減）。
+   1. HTTPリクエスト／レスポンスは接続中にパイプライン化出来る。パイプラインは、クライアントにレスポンスごとの待ちを発生させることなく、複数リクエストを発行させ、1つのTCP接続でより効率良く少ない時間での利用を可能にする。
+   1. TCP接続によるパケット数を削減し、ネットワークの輻輳状態を決定する十分な時間があるため、ネットワーク輻輳が軽減される。
+   1. TCPコネクションの接続ハンドシェイクの時間消費が無いため、次のリクエストの遅延が減る。
+   1. 
+HTTP can evolve more gracefully, since errors can be reported without the penalty of closing the TCP connection.
+クライアントは
+Clients using future versions of HTTP might optimistically try a new feature, but if communicating with an older server, retry with old semantics after an error is reported.
+
+#### TCP接続
 
 非Persistent Connectionsは1リクエストごとに下記のフローが発生する。
 
@@ -44,4 +54,4 @@
 +--------+                +--------+
 ```
 
-Persistent Connectionsでは、`Establish TCP Connection`から`Finish TCP Connection`の間に複数のHTTPリクエスト/レスポンスが発生する。
+Persistent Connectionsでは、`Establish TCP Connection`から`Finish TCP Connection`の間に複数のHTTPリクエスト／レスポンスが発生する。
