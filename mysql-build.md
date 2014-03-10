@@ -8,7 +8,19 @@ mysql-build/bin/mysql-build -v $VERSION "~/mysql/$VERSION"
 
 ## DATADIR
 
-`/etc/my.cnf`の無い状態で`mysql_install_db`を実行すると、以下のようなDATADIRになることがわかった。
+`/etc/my.cnf`の無い状態で`mysql_install_db`を実行すると、以下のようなDATADIRになる。
+ことDATADIR以下にmy.cnfを置いても認識される。
+
+1. `/etc/my.cnf`が読まれる
+1. `DATADIR/my.cnf`が次に読まれる
+1. `defaults-extra-file`で指定したものが次に読まれる
+1. `~/.my.cnf`が最後に読まれる
+
+という順序になるらしい。
+ちなみに5系からは`DATADIR/my.cnf`から`$MYSQL_HOME/my.cnf`にディレクトリが変更されている。
+
+* [MySQL 4.1 リファレンスマニュアル :: 4.1.2 my.cnf オプション設定ファイル](http://dev.mysql.com/doc/refman/4.1/ja/option-files.html)
+* [MySQL 5.1 リファレンスマニュアル :: 3.3.2 オプションファイルの使用](http://dev.mysql.com/doc/refman/5.1/ja/option-files.html)
 
 ### チェックコマンド
 
