@@ -65,7 +65,7 @@ disable-gtid-unsafe-statements
 MySQL :: MySQL 5.6 Reference Manual :: 16.1.4.5 Global Transaction ID Options and Variables
 
 ```sql
-mysql> show variables like "%gtid%"'
+mysql> show variables like "%gtid%";
 +--------------------------+-----------+
 | Variable_name            | Value     |
 +--------------------------+-----------+
