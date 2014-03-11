@@ -132,6 +132,12 @@ general_logとgeneral_log_fileに置き換わった。
 
 ### [ERROR] 5.6.16/bin/mysqld: unknown variable 'log-slow-queries=/home/vagrant/mysql/5.6.16/var/log/mysql/slow.log'
 
+> [MySQL :: MySQL 5.5 Reference Manual :: 5.2.5 The Slow Query Log](http://dev.mysql.com/doc/refman/5.5/en/slow-query-log.html)
+> 
+> By default, the slow query log is disabled. To specify the initial slow query log state explicitly, use ***--slow_query_log[={0|1}]***. With no argument or an argument of 1, --slow_query_log enables the log. With an argument of 0, this option disables the log. To specify a log file name, use ***--slow_query_log_file=file_name***. The older option to enable the slow query log file, --log-slow-queries, is deprecated.
+
+`--log`と同様に、`--slow_query_log`と`--slow_query_log_file`にせよとのこと。
+
 ### [ERROR] 5.6.16/bin/mysqld: unknown variable 'table_cache=16'
 
 `table_open_cache`に変わったらしい。
