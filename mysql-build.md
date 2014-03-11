@@ -10,15 +10,33 @@ mysql-build/bin/mysql-build -v $VERSION "~/mysql/$VERSION"
 
 ## DATADIR, $MYSQL_HOMEについて
 
-`/etc/my.cnf`の無い状態で`mysql_install_db`を実行すると、以下のようなDATADIRになる。
-ことDATADIR以下にmy.cnfを置いても認識される。
+~~/etc/my.cnfの無い状態で~~ `mysql_install_db`を実行すると、以下のようなDATADIRになる。
+~~DATADIR以下にmy.cnfを置いても認識される。~~
 
 1. `/etc/my.cnf`が読まれる
-1. `DATADIR/my.cnf`が次に読まれる
+1. ~~`DATADIR/my.cnf`が次に読まれる~~
 1. `defaults-extra-file`で指定したものが次に読まれる
 1. `~/.my.cnf`が最後に読まれる
 
 という順序になるらしい。
+
+---
+
+上記を書いた時には誤解があって、`mysql --help | grep my.cnf`で調べると、それぞれ異なる場所を参照していた。
+
+ * 4.0.30 ... /etc/my.cnf /home/vagrant/mysql/4.0.30/var/my.cnf ~/.my.cnf
+ * 4.1.25 ... /etc/my.cnf /home/vagrant/mysql/4.1.25/var/my.cnf ~/.my.cnf
+ * 5.0.96 ... /etc/my.cnf /home/vagrant/mysql/5.0.96/etc/my.cnf ~/.my.cnf
+ * 5.1.73 ... /etc/my.cnf /etc/mysql/my.cnf /home/vagrant/mysql/5.1.73/etc/my.cnf ~/.my.cnf
+ * 5.5.36 ... /etc/my.cnf /etc/mysql/my.cnf /home/vagrant/mysql/5.5.36/etc/my.cnf ~/.my.cnf
+ * 5.6.16 ... /etc/my.cnf /etc/mysql/my.cnf /home/vagrant/mysql/5.6.16/etc/my.cnf ~/.my.cnf
+
+また上記以外の場所にmy.cnfを設置しても、`mysql`や`mysqld_safe`コマンドでは読み込まれるが、`mysqladmin`では読み込まれない、といったコマンドごとの差異もあるため、基本的にはgrepで調べた方が良い。
+
+更に、5系からはinclude機能も追加されたので、そちらを活用するのも良い。
+
+---
+
 ちなみに5系からは`DATADIR/my.cnf`から`$MYSQL_HOME/my.cnf`にディレクトリが変更されている。
 
 * [MySQL 4.1 リファレンスマニュアル :: 4.1.2 my.cnf オプション設定ファイル](http://dev.mysql.com/doc/refman/4.1/ja/option-files.html)
