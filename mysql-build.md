@@ -6,7 +6,9 @@
 mysql-build/bin/mysql-build -v $VERSION "~/mysql/$VERSION"
 ```
 
-## DATADIR
+# my.cnf
+
+## DATADIR, $MYSQL_HOMEについて
 
 `/etc/my.cnf`の無い状態で`mysql_install_db`を実行すると、以下のようなDATADIRになる。
 ことDATADIR以下にmy.cnfを置いても認識される。
@@ -22,13 +24,13 @@ mysql-build/bin/mysql-build -v $VERSION "~/mysql/$VERSION"
 * [MySQL 4.1 リファレンスマニュアル :: 4.1.2 my.cnf オプション設定ファイル](http://dev.mysql.com/doc/refman/4.1/ja/option-files.html)
 * [MySQL 5.1 リファレンスマニュアル :: 3.3.2 オプションファイルの使用](http://dev.mysql.com/doc/refman/5.1/ja/option-files.html)
 
-### チェックコマンド
+### datadir チェック
 
 ```sql
 show variables like "datadir";
 ```
 
-### 表
+#### 表
 
 | Versions | Value                            | Note                                               |
 |----------|----------------------------------|----------------------------------------------------|
