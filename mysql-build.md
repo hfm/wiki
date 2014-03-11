@@ -39,6 +39,26 @@ show variables like "datadir";
 | 5.5.36   | /home/vagrant/mysql/5.5.36/data/ |                                                    |
 | 5.6.16   | /home/vagrant/mysql/5.6.16/data/ |                                                    |
 
+# MySQL 5.6 からの変更点
+
+## Replication
+
+### Reset Slave
+
+> In MySQL 5.6 (unlike the case in MySQL 5.1 and earlier), RESET SLAVE does not change any replication connection parameters such as master host, master port, master user, or master password, which are retained in memory. This means that START SLAVE can be issued without requiring a CHANGE MASTER TO statement following RESET SLAVE.
+
+slaveが機能中にRESET SLAVEしないこと。
+
+### GTID
+
+5.6から使えるGTIDは、my.cnfに以下のような呪文を入れることで起動。
+variable scopeはどちらもglobalなので、どこ突っ込んでも良さそう。
+
+gtid-mode=ON
+disable-gtid-unsafe-statements
+前者は名前通り、後者はGTIDを有効化すると非互換になってしまうSQL実行を止めてしまうもの。
+MySQL :: MySQL 5.6 Reference Manual :: 16.1.4.5 Global Transaction ID Options and Variables
+
 # Troubleshoot
 
 ## Error
