@@ -16,7 +16,7 @@ mysql-build/bin/mysql-build -v $VERSION "~/mysql/$VERSION"
 
 ## DATADIR, $MYSQL_HOMEについて
 
-`mysql_install_db`を実行すると、以下のようなDATADIRになる。
+`mysql_install_db`を実行すると、以下のようなDATADIRになる (5.1からは$MYSQL_HOMEという名称に変更されている)。
 
 ```sql
 mysql> show variables like "datadir";
