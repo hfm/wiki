@@ -56,10 +56,27 @@ slaveが機能中にRESET SLAVEしないこと。
 5.6から使えるGTIDは、my.cnfに以下のような呪文を入れることで起動。
 variable scopeはどちらもglobalなので、どこ突っ込んでも良さそう。
 
+```ini
 gtid-mode=ON
 disable-gtid-unsafe-statements
+```
+
 前者は名前通り、後者はGTIDを有効化すると非互換になってしまうSQL実行を止めてしまうもの。
 MySQL :: MySQL 5.6 Reference Manual :: 16.1.4.5 Global Transaction ID Options and Variables
+
+```sql
+mysql> show variables like "%gtid%"'
++--------------------------+-----------+
+| Variable_name            | Value     |
++--------------------------+-----------+
+| enforce_gtid_consistency | OFF       |
+| gtid_executed            |           |
+| gtid_mode                | OFF       |
+| gtid_next                | AUTOMATIC |
+| gtid_owned               |           |
+| gtid_purged              |           |
++--------------------------+-----------+
+```
 
 # Troubleshoot
 
