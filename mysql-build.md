@@ -6,6 +6,12 @@
 mysql-build/bin/mysql-build -v $VERSION "~/mysql/$VERSION"
 ```
 
+## 便利
+
+[黒田さん](https://twitter.com/lamanotrama/)に教えてもらった。バージョンごとのvariablesや機能の比較表。
+
+* [MySQL :: MySQL Server Version Reference :: 1 mysqld Option/Variable Reference](https://dev.mysql.com/doc/mysqld-version-reference/en/mysqld-version-reference-optvar.html)
+
 # my.cnf
 
 ## DATADIR, $MYSQL_HOMEについて
@@ -18,7 +24,7 @@ mysql-build/bin/mysql-build -v $VERSION "~/mysql/$VERSION"
 1. `defaults-extra-file`で指定したものが次に読まれる
 1. `~/.my.cnf`が最後に読まれる
 
-という順序になるらしい。
+という順序になるらしい。https://twitter.com/lamanotrama/status/442981581431402496
 
 ---
 
