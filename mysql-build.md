@@ -119,9 +119,25 @@ my.cnfの設定や`show variables`でチェックする。
 bin-logの名前が間違っていて見つからない。
 slaveの`MASTER_LOG_FILE`を見直す。
 
-### [ERROR] /home/vagrant/mysql/5.5.36/bin/mysqld: unknown variable 'default-character-set=ujis'
+### [ERROR] 5.5.36/bin/mysqld: unknown variable 'default-character-set=ujis'
 
 mysql 5.5からは`default-character-set`は`[mysqld]`から廃止されている。
 
 代わりに`character-set-server = ujis`を使う。
 clientやdumpではdefault...は使える。
+
+### [ERROR] 5.6.16/bin/mysqld: ambiguous option '--log=/home/vagrant/mysql/5.6.16/var/log/mysql/query.log' (log-bin, log_slave_updates)
+
+general_logとgeneral_log_fileに置き換わった。
+
+### [ERROR] 5.6.16/bin/mysqld: unknown variable 'log-slow-queries=/home/vagrant/mysql/5.6.16/var/log/mysql/slow.log'
+
+### [ERROR] 5.6.16/bin/mysqld: unknown variable 'table_cache=16'
+
+`table_open_cache`に変わったらしい。
+5.1.2から変わったらしいけど、5.5でも動いた。
+
+> [MySQL :: MySQL 5.1 Reference Manual :: 8.8.3 How MySQL Opens and Closes Tables](http://dev.mysql.com/doc/refman/5.1/en/table-cache.html)
+> 
+> #### Note
+> table_open_cache was known as table_cache in MySQL 5.1.2 and earlier.
