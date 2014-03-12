@@ -60,6 +60,24 @@ mysqlは特定ディレクトリから`my.cnf`を読み込む。順序は次の�
 * [MySQL 4.1 リファレンスマニュアル :: 4.1.2 my.cnf オプション設定ファイル](http://dev.mysql.com/doc/refman/4.1/ja/option-files.html)
 * [MySQL 5.1 リファレンスマニュアル :: 3.3.2 オプションファイルの使用](http://dev.mysql.com/doc/refman/5.1/ja/option-files.html)
 
+# master/slave
+
+## 同一ホスト上でmaster/slave構成を取りたい場合
+
+前提：同一ホスト上に複数のMySQLを起動するにあたり、portとsocketを変えて立ち上げている。
+
+作業としては、一般的な`CHANGE MASTER TO`構文に`MASTER_PORT`を付け加える。
+
+```sql
+mysql> CHANGE MASTER TO
+MASTER_HOST='192.168.128.2',
+MASTER_PORT=3308,
+MASTER_USER='repl',
+MASTER_PASSWORD='password',
+MASTER_LOG_FILE='localhost-bin.000007',
+MASTER_LOG_POS=714717068;
+```
+
 # MySQL 5.6 からの変更点
 
 ## Replication
