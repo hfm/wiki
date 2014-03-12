@@ -18,13 +18,13 @@
 
 ## 設定
 
-初めから入っているfreenodeを削除
+### 初めから入っているfreenodeを削除
 
 ```
 /server del freenode
 ```
 
-join/part/quit を非表示にする
+### join/part/quit を非表示にする
 
 ```
 /set irc.look.smart_filter on 
@@ -32,10 +32,27 @@ join/part/quit を非表示にする
 /filter add joinquit * irc_join,irc_part,irc_quit *
 ```
 
-highlight
+### highlight
 
 ```
 /set weechat.look.highlight "$nick,おっくん"
+```
+
+### notification
+
+requires
+
+```bash
+brew install terminal-notifier
+git clone git://github.com/SeTeM/pync.git
+cd pync/
+sudo python setup.py install # sudo入れないとうまくいかなかった
+```
+
+weechat
+
+```
+/script notification_center
 ```
 
 ## サーバ追加
