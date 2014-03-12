@@ -148,3 +148,52 @@ general_logとgeneral_log_fileに置き換わった。
 > 
 > #### Note
 > table_open_cache was known as table_cache in MySQL 5.1.2 and earlier.
+
+### [ERROR] Slave I/O: The slave I/O thread stops because a fatal error is encountered when it try to get the value of TIME_ZONE global variable from master. Error: Unknown system variable 'TIME_ZONE', Error_code: 1193
+
+```
++--------------+   Replication  +-------------+
+| master (4.0) | <------------- | slave (5.1) |
++--------------+                +-------------+
+```
+
+をやろうとして`Slave_IO_Running: No`になった。
+
+「master dbから`TIME_ZONE`というグローバル変数を取ってこようとしたけど、そのような値が見つかりません」というエラー。
+
+どうやらMySQL 5.1系あたりから、MASTER DBの`time_zone`を参照しており、それができないとエラーを出すようになったらしい。
+
+```sql
+@ 4.0.30
+mysql> show variables like "time%zone";
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| timezone      | JST   |
++---------------+-------+
+
+@4.1.25
+mysql> show variables like "time%zone";
++---------------+--------+
+| Variable_name | Value  |
++---------------+--------+
+| time_zone     | SYSTEM |
++---------------+--------+
+
+@5.0.73
+mysql> show variables like "time%zone";
++---------------+--------+
+| Variable_name | Value  |
++---------------+--------+
+| time_zone     | SYSTEM |
++---------------+--------+
+
+@ 5.1.73
+mysql> show variables like "%time%zone%";
++------------------+--------+
+| Variable_name    | Value  |
++------------------+--------+
+| system_time_zone | JST    | ←これなんぞー
+| time_zone        | SYSTEM |
++------------------+--------+
+```
