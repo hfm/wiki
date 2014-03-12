@@ -99,6 +99,28 @@ mysql> show variables like "%gtid%";
 
 # Troubleshoot
 
+## Warning
+
+### [Warning] Neither --relay-log nor --relay-log-index were used; so replication may break when this MySQL server acts as a slave and has his hostname changed!! Please use '--relay-log=localhost-relay-bin' to avoid this problem.
+
+`--relay-log`と`--relay-log-index`をどっちも使っていないと、slave側のhostnameが変わると死ぬ？
+
+`--relay-log=localhost-relay-bin`を使って、relayログをlocalhost-relay-binに仕向けたほうが良い。
+
+```sql
+mysql> show variables like "%relay_log%";
++-----------------------+----------------+
+| Variable_name         | Value          |
++-----------------------+----------------+
+| max_relay_log_size    | 0              |
+| relay_log             |                | ←どっちも無いと死ぬ
+| relay_log_index       |                |
+| relay_log_info_file   | relay-log.info |
+| relay_log_purge       | ON             |
+| relay_log_space_limit | 0              |
++-----------------------+----------------+
+```
+
 ## Error
 
 ### /etc/my.cnf
