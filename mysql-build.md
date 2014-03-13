@@ -240,6 +240,7 @@ clientやdumpではdefault...は使える。
 
 #### [ERROR] 5.6.16/bin/mysqld: ambiguous option '--log=/home/vagrant/mysql/5.6.16/var/log/mysql/query.log' (log-bin, log_slave_updates)
 
+MySQL 5.6.13で見た。
 general_logとgeneral_log_fileに置き換わった。
 
 #### [ERROR] 5.6.16/bin/mysqld: unknown variable 'log-slow-queries=/home/vagrant/mysql/5.6.16/var/log/mysql/slow.log'
@@ -311,6 +312,7 @@ mysql> show variables like "%time%zone%";
 
 #### [Warning] No argument was provided to --log-bin, and --log-bin-index was not used; so replication may break when this MySQL server acts as a master and has his hostname changed!! Please use '--log-bin=localhost-bin' to avoid this problem.
 
+MySQL 5.6.13で見た。
 名前つけろエラー。
 
 ```ini
@@ -320,6 +322,7 @@ log-bin=localhost-bin
 
 #### [Warning] Neither --relay-log nor --relay-log-index were used; so replication may break when this MySQL server acts as a slave and has his hostname changed!! Please use '--relay-log=localhost-relay-bin' to avoid this problem.
 
+MySQL 5.6.13で見た。
 名前つけろエラー。
 
 ```ini
@@ -336,6 +339,7 @@ relay_log=localhost-relay-bin
 
 #### [Warning] Buffered warning: Could not increase number of max_open_files to more than 1024 (request: 8192)
 
+MySQL 5.6.13で見た。
 ulimitの問題っぽい？
 
 ```console
@@ -346,3 +350,26 @@ ulimitの問題っぽい？
 | open_files_limit | 1024  |
 +------------------+-------+
 ```
+
+#### InnoDB: Warning: Using innodb_additional_mem_pool_size is DEPRECATED. This option may be removed in future releases, together with the option innodb_use_sys_malloc and with the InnoDB's internal memory allocator.
+
+MySQL 5.6.3でdeprecated.
+
+`innodb_additional_mem_pool_size`はもうすぐ死ぬ。
+
+* [MySQL :: MySQL 5.6 Reference Manual :: 14.2.13 InnoDB Startup Options and System Variables](http://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_additional_mem_pool_size)
+
+代わりに`innodb_use_sys_malloc`とInnoDBのinternal memory allocatorを使えとのこと。
+`innodb_use_sys_malloc`は特に何も指定しなくてもONになっていた。
+
+```sql
+@ 5.6.13
+mysql > show variables like "%malloc%";
++-----------------------+-------+
+| Variable_name         | Value |
++-----------------------+-------+
+| innodb_use_sys_malloc | ON    |
++-----------------------+-------+
+```
+
+とりあえず`innodb_additional_mem_pool_size`はmy.cnfから外しておくのが良さそう？
