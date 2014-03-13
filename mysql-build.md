@@ -326,3 +326,23 @@ log-bin=localhost-bin
 [mysqld]
 relay_log=localhost-relay-bin
 ```
+
+#### [Warning] Using unique option prefix thread_cache instead of thread_cache_size is deprecated and will be removed in a future release. Please use the full name instead.
+
+```diff
+-thread_cache            = 128
++thread_cache_size       = 128
+```
+
+#### [Warning] Buffered warning: Could not increase number of max_open_files to more than 1024 (request: 8192)
+
+ulimitの問題っぽい？
+
+```console
+[vagrant@localhost]~/mysql/5.6.16% bin/mysql -uroot -e 'show variables like "open_files_limit"'
++------------------+-------+
+| Variable_name    | Value |
++------------------+-------+
+| open_files_limit | 1024  |
++------------------+-------+
+```
