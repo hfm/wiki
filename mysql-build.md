@@ -173,6 +173,19 @@ mysql> show variables like "%gtid%";
 +--------------------------+-----------+
 ```
 
+### TIMESTAMP
+
+TIMESTAMPのDEFAULT値は明示的に設定しなければいけないようになっている。
+いずれremovedの運命にあるので、my.cnfに`explicit_defaults_for_timestamp`を入れて対応する。
+
+ただし5.6.6からこの項目が入ったので、それ以下のバージョンでは動作が保証されない。
+
+```
+[Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+```
+
+ * [MySQL :: MySQL 5.6 Reference Manual :: 5.1.4 Server System Variables](http://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_explicit_defaults_for_timestamp)
+
 # Troubleshoot
 
 ## Warning
@@ -204,32 +217,32 @@ mysql> show variables like "%relay_log%";
 mysql-buildは`/etc/my.cnf`を設置しない。
 しかし、CentOS 6で`yum update -y`を実行すると、postfix, そしてその依存関係であるmysql-libsがインストールされ、自動的に`/etc/my.cnf`が設置されてしまう。
 
-### [ERROR] Slave I/O: error connecting to master 'repl@192.168.128.4:3306' - retry-time: 60  retries: 86400, Error_code: 2013
+#### [ERROR] Slave I/O: error connecting to master 'repl@192.168.128.4:3306' - retry-time: 60  retries: 86400, Error_code: 2013
 
 iptabelsを見なおしてみよう。
 
-### [ERROR] The slave I/O thread stops because master and slave have different values for the COLLATION_SERVER global variable. The values must be equal for replication to work
+#### [ERROR] The slave I/O thread stops because master and slave have different values for the COLLATION_SERVER global variable. The values must be equal for replication to work
 
 文字コードが違ったりすると上記のようなエラーが起こる。
 my.cnfの設定や`show variables`でチェックする。
 
-### [ERROR] Error reading packet from server: Could not find first log file name in binary log index file ( server_errno=1236)
+#### [ERROR] Error reading packet from server: Could not find first log file name in binary log index file ( server_errno=1236)
 
 bin-logの名前が間違っていて見つからない。
 slaveの`MASTER_LOG_FILE`を見直す。
 
-### [ERROR] 5.5.36/bin/mysqld: unknown variable 'default-character-set=ujis'
+#### [ERROR] 5.5.36/bin/mysqld: unknown variable 'default-character-set=ujis'
 
 mysql 5.5からは`default-character-set`は`[mysqld]`から廃止されている。
 
 代わりに`character-set-server = ujis`を使う。
 clientやdumpではdefault...は使える。
 
-### [ERROR] 5.6.16/bin/mysqld: ambiguous option '--log=/home/vagrant/mysql/5.6.16/var/log/mysql/query.log' (log-bin, log_slave_updates)
+#### [ERROR] 5.6.16/bin/mysqld: ambiguous option '--log=/home/vagrant/mysql/5.6.16/var/log/mysql/query.log' (log-bin, log_slave_updates)
 
 general_logとgeneral_log_fileに置き換わった。
 
-### [ERROR] 5.6.16/bin/mysqld: unknown variable 'log-slow-queries=/home/vagrant/mysql/5.6.16/var/log/mysql/slow.log'
+#### [ERROR] 5.6.16/bin/mysqld: unknown variable 'log-slow-queries=/home/vagrant/mysql/5.6.16/var/log/mysql/slow.log'
 
 > [MySQL :: MySQL 5.5 Reference Manual :: 5.2.5 The Slow Query Log](http://dev.mysql.com/doc/refman/5.5/en/slow-query-log.html)
 > 
@@ -237,7 +250,7 @@ general_logとgeneral_log_fileに置き換わった。
 
 `--log`と同様に、`--slow_query_log`と`--slow_query_log_file`にせよとのこと。
 
-### [ERROR] 5.6.16/bin/mysqld: unknown variable 'table_cache=16'
+#### [ERROR] 5.6.16/bin/mysqld: unknown variable 'table_cache=16'
 
 `table_open_cache`に変わったらしい。
 5.1.2から変わったらしいけど、5.5でも動いた。
@@ -247,7 +260,7 @@ general_logとgeneral_log_fileに置き換わった。
 > #### Note
 > table_open_cache was known as table_cache in MySQL 5.1.2 and earlier.
 
-### [ERROR] Slave I/O: The slave I/O thread stops because a fatal error is encountered when it try to get the value of TIME_ZONE global variable from master. Error: Unknown system variable 'TIME_ZONE', Error_code: 1193
+#### [ERROR] Slave I/O: The slave I/O thread stops because a fatal error is encountered when it try to get the value of TIME_ZONE global variable from master. Error: Unknown system variable 'TIME_ZONE', Error_code: 1193
 
 ```
 +--------------+   Replication  +-------------+
@@ -294,4 +307,22 @@ mysql> show variables like "%time%zone%";
 | system_time_zone | JST    | ←これなんぞー
 | time_zone        | SYSTEM |
 +------------------+--------+
+```
+
+#### [Warning] No argument was provided to --log-bin, and --log-bin-index was not used; so replication may break when this MySQL server acts as a master and has his hostname changed!! Please use '--log-bin=localhost-bin' to avoid this problem.
+
+名前つけろエラー。
+
+```ini
+[mysqld]
+log-bin=localhost-bin
+```
+
+#### [Warning] Neither --relay-log nor --relay-log-index were used; so replication may break when this MySQL server acts as a slave and has his hostname changed!! Please use '--relay-log=localhost-relay-bin' to avoid this problem.
+
+名前つけろエラー。
+
+```ini
+[mysqld]
+relay_log=localhost-relay-bin
 ```
