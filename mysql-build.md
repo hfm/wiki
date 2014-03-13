@@ -373,3 +373,38 @@ mysql > show variables like "%malloc%";
 ```
 
 とりあえず`innodb_additional_mem_pool_size`はmy.cnfから外しておくのが良さそう？
+
+#### [Warning] Slave SQL: If a crash happens this configuration does not guarantee that the relay log info will be consistent, Error_code: 0
+
+MySQL 5.6から導入されたcrash-safe replicationに関する警告らしい。
+
+ * [replication - MySQL Slave Warns: Configuration does not guarantee that the relay log info will be consistent after a crash - Stack Overflow](http://stackoverflow.com/questions/15221080/mysql-slave-warns-configuration-does-not-guarantee-that-the-relay-log-info-will)
+
+####  [Warning] Storing MySQL user name or password information in the master info repository is not secure and is therefore not recommended. Please consider using the USER and PASSWORD connection options for START SLAVE; see the 'START SLAVE Syntax' in the MySQL Manual for more information.
+
+master/slave構成時に、`CHANGE MASTER TO`で`MASTER_USER`と`MASTER_PASSWORD`を突っ込んで、master infoリポジトリに保存するのは安全じゃないというエラー。
+
+MySQL 5.6.4以降は`START SLAVE`に`USER='*'`と`PASSWORD='*'`をつけられるようになって、pluggableな実装になったらしい。
+`CHANGE MASTER TO`に含めず（＝master infoに含めず）slaveは走らせることが出来るようになったので、そちらを推奨しているらしい。
+
+ * [MySQL :: MySQL 5.6 Reference Manual :: 13.4.2.5 START SLAVE Syntax](https://dev.mysql.com/doc/refman/5.6/en/start-slave.html)
+
+#### [Warning] Slave I/O: Notifying master by SET @master_binlog_checksum= @@global.binlog_checksum failed with error: Unknown system variable 'binlog_checksum', Error_code: 1193
+
+binlog_checksumというグローバル変数がMySQL 5.6.2から追加された。
+MySQL 5.6.6以上になると、この設定がデフォルトでON (CRC32) になる。
+
+MySQL 5.6がslave時に、masterのbinlog_checksumを見に行こうとするが、master側にその変数がないと上記のエラーにつながる。
+
+> In MySQL 5.6.6 and later, setting this variable on the master to a value unrecognized by the slave causes the slave to set its own binlog_checksum value to NONE, and to stop replication with an error. (Bug #13553750, Bug #61096) If backward compatibility with older slaves is a concern, you may want to set the value explicitly to NONE.
+
+ * ref:
+   * https://twitter.com/kenjiskywalker/status/332680531634446336
+   * [日々の覚書: MySQL 5.6より前のマスターにMySQL 5.6のスレーブをぶら下げるとワーニングが出る(Err: 1193)](http://yoku0825.blogspot.jp/2013/05/mysql-55mysql-56err-1193.html)
+
+これどうしたらいいんだろう。
+MySQL 5.6.6以降は、古いMySQLをレプリケーションしてはいけないということだろうか...？
+
+#### [Warning] Slave I/O: Unknown system variable 'SERVER_UUID' on master. A probable cause is that the variable is not supported on the master (version: 5.0.96-log), even though it is on the slave (version: 5.6.16-log), Error_code: 1193
+
+`binlog_checksum`と似た現象。なんでやねん設計。
