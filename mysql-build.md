@@ -190,6 +190,10 @@ TIMESTAMPのDEFAULT値は明示的に設定しなければいけないように�
 
 ### master-data
 
+デフォルトで`1`、`master-data=2`にすると、`CHANGE MASTER TO`文がコメントアウトされる。
+
+slaveサーバからdumpするときはmaster-data=2にして出したほうが良い。
+
 > Use this option to dump a master replication server to produce a dump file that can be used to set up another server as a slave of the master. It causes the dump output to include a CHANGE MASTER TO statement that indicates the binary log coordinates (file name and position) of the dumped server. These are the master server coordinates from which the slave should start replicating after you load the dump file into the slave.
 > 
 > If the option value is 2, the CHANGE MASTER TO statement is written as an SQL comment, and thus is informative only; it has no effect when the dump file is reloaded. If the option value is 1, the statement is not written as a comment and takes effect when the dump file is reloaded. If no option value is specified, the default value is 1.
