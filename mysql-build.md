@@ -211,7 +211,10 @@ TIMESTAMPのDEFAULT値は明示的に設定しなければいけないように�
 > 
 > c. Dump the slave server:
 > 
+> ```sh
 > shell> mysqldump --master-data=2 --all-databases > dumpfile
+> ```
+> 
 > Using --master-data=2 works only if binary logging has been enabled on the slave. Otherwise, mysqldump fails with the error Binlogging on server not active. In this case you must handle any locking issues in another manner, using one or more of --add-locks, --lock-tables, --lock-all-tables, or --single-transaction, as required by your application and environment.
 > 
 > d. Restart the slave:
@@ -222,7 +225,7 @@ TIMESTAMPのDEFAULT値は明示的に設定しなければいけないように�
 > 
 > e. On the new slave, load the dump file:
 > 
-> ```sql
+> ```sh
 > shell> mysql < dumpfile
 > ```
 > 
