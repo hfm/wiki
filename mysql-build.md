@@ -186,6 +186,55 @@ TIMESTAMPのDEFAULT値は明示的に設定しなければいけないように�
 
  * [MySQL :: MySQL 5.6 Reference Manual :: 5.1.4 Server System Variables](http://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_explicit_defaults_for_timestamp)
 
+## mysqldump
+
+### master-data
+
+> Use this option to dump a master replication server to produce a dump file that can be used to set up another server as a slave of the master. It causes the dump output to include a CHANGE MASTER TO statement that indicates the binary log coordinates (file name and position) of the dumped server. These are the master server coordinates from which the slave should start replicating after you load the dump file into the slave.
+> 
+> If the option value is 2, the CHANGE MASTER TO statement is written as an SQL comment, and thus is informative only; it has no effect when the dump file is reloaded. If the option value is 1, the statement is not written as a comment and takes effect when the dump file is reloaded. If no option value is specified, the default value is 1.
+> 
+> This option requires the RELOAD privilege and the binary log must be enabled.
+> 
+> The --master-data option automatically turns off --lock-tables. It also turns on --lock-all-tables, unless --single-transaction also is specified, in which case, a global read lock is acquired only for a short time at the beginning of the dump (see the description for --single-transaction). In all cases, any action on logs happens at the exact moment of the dump.
+> 
+> It is also possible to set up a slave by dumping an existing slave of the master. To do this, use the following procedure on the existing slave:
+> 
+> a. Stop the slave's SQL thread and get its current status:
+> 
+> ```sql
+> mysql> STOP SLAVE SQL_THREAD;
+> mysql> SHOW SLAVE STATUS;
+> ```
+> 
+> b. From the output of the SHOW SLAVE STATUS statement, the binary log coordinates of the master server from which the new slave should start replicating are the values of the Relay_Master_Log_File and Exec_Master_Log_Pos fields. Denote those values as file_name and file_pos.
+> 
+> c. Dump the slave server:
+> 
+> shell> mysqldump --master-data=2 --all-databases > dumpfile
+> Using --master-data=2 works only if binary logging has been enabled on the slave. Otherwise, mysqldump fails with the error Binlogging on server not active. In this case you must handle any locking issues in another manner, using one or more of --add-locks, --lock-tables, --lock-all-tables, or --single-transaction, as required by your application and environment.
+> 
+> d. Restart the slave:
+> 
+> ```sql
+> mysql> START SLAVE;
+> ```
+> 
+> e. On the new slave, load the dump file:
+> 
+> ```sql
+> shell> mysql < dumpfile
+> ```
+> 
+> f. On the new slave, set the replication coordinates to those of the master server obtained earlier:
+> 
+> ```sql
+> mysql> CHANGE MASTER TO
+>     -> MASTER_LOG_FILE = 'file_name', MASTER_LOG_POS = file_pos;
+> ```
+> 
+> The CHANGE MASTER TO statement might also need other parameters, such as MASTER_HOST to point the slave to the correct master server host. Add any such parameters as necessary.
+
 # Troubleshoot
 
 ## Warning
