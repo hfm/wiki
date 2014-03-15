@@ -16,6 +16,12 @@ SSL鍵はみなRSAが使われている。DSAは鍵長が1024bitsまでだし、
 ### trust store
 信頼できるルート証明書を総称する言葉。
 
+### csr
+
+Certificate Signing Request. 証明書署名要求。
+
+caに証明書への署名を要求するエンティティで、公開鍵情報とエンティティに関する情報が含まれている。
+
 ## Commands
 ### Self-signed cert
 
