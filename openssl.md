@@ -16,3 +16,16 @@ SSL鍵はみなRSAが使われている。DSAは鍵長が1024bitsまでだし、
 ### trust store
 信頼できるルート証明書を総称する言葉。
 
+## Commands
+### Self-signed cert
+
+```sh
+COMMON_NAME=wiki.hifumi.info
+openssl req -x509 \
+            -days 36500 \
+            -newkey rsa:2048 \
+            -nodes \
+            -out $COMMON_NAME.crt \
+            -keyout $COMMON_NAME.key \
+            -subj "/C=JP/ST=Tokyo/L=Shibuya-ku/O=/OU=/CN=$COMMON_NAME"
+```
