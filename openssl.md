@@ -35,3 +35,8 @@ openssl req -x509 \
             -keyout $COMMON_NAME.key \
             -subj "/C=JP/ST=Tokyo/L=Shibuya-ku/O=/OU=/CN=$COMMON_NAME"
 ```
+
+## 資料
+
+ * [OpenSSL Cookbook](http://www.amazon.co.jp/exec/obidos/ASIN/B00FLY5J2O/hifumiass-22/ref=nosim/)
+ * [nginx - httpsだからというだけで安全？調べたら怖くなってきたSSLの話!？ - Qiita](http://qiita.com/kuni-nakaji/items/5118b23bf2ea44fed96e)
