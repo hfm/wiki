@@ -40,3 +40,5 @@ openssl req -x509 \
 
  * [OpenSSL Cookbook](http://www.amazon.co.jp/exec/obidos/ASIN/B00FLY5J2O/hifumiass-22/ref=nosim/)
  * [nginx - httpsだからというだけで安全？調べたら怖くなってきたSSLの話!？ - Qiita](http://qiita.com/kuni-nakaji/items/5118b23bf2ea44fed96e)
+ * [BREACH ATTACK](http://breachattack.com/)
+   * [breachattack.com/resources/BREACH - SSL, gone in 30 seconds.pdf](http://breachattack.com/resources/BREACH%20-%20SSL,%20gone%20in%2030%20seconds.pdf)
