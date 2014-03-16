@@ -32,6 +32,6 @@ int SSL_use_certificate(SSL *ssl, X509 *x)
 
 ## call methods
 
- * `SSLerr()`
+ * `SSLerr()` ... [SSLerr(f,r)](SSLerr)
  * `ssl_cert_inst()`
  * `ssl_set_cert()`
