@@ -1,5 +1,11 @@
 # `int SSL_use_certificate(SSL *ssl, X509 *x)`
 
+## defined
+
+ * `ssl/ssl_rsa.c`
+
+## codes
+
 ```c
 int SSL_use_certificate(SSL *ssl, X509 *x)
 	{
