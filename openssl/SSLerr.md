@@ -12,4 +12,4 @@
 
 ## methods
 
- * `ERR_PUT_error(ERR_LIB_SSL,(f),(r),__FILE__,__LINE__)`
+ * [ERR_PUT_error(ERR_LIB_SSL,(f),(r),__FILE__,__LINE__)](ERR_PUT_error)
