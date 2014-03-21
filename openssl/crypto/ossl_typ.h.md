@@ -1,6 +1,6 @@
 # ossl_typ.h
 
-## typedef
+## define
 
 * #define HEADER_OPENSSL_TYPES_H
 * #define ASN1_INTEGER ASN1_STRING
@@ -20,6 +20,21 @@
 * #define ASN1_UTF8STRING ASN1_STRING
 * #define ASN1_BOOLEAN int
 * #define ASN1_NULL int
+* #define DECLARE_PKCS12_STACK_OF(type) /* Nothing */
+* #define IMPLEMENT_PKCS12_STACK_OF(type) /* Nothing */
+
+## undef
+
+* #undef X509_NAME
+* #undef X509_EXTENSIONS
+* #undef X509_CERT_PAIR
+* #undef PKCS7_ISSUER_AND_SERIAL
+* #undef OCSP_REQUEST
+* #undef OCSP_RESPONSE
+* #undef BIGNUM
+
+## typedef
+
 * typedef struct asn1_string_st ASN1_INTEGER;
 * typedef struct asn1_string_st ASN1_ENUMERATED;
 * typedef struct asn1_string_st ASN1_BIT_STRING;
@@ -40,13 +55,6 @@
 * typedef int ASN1_NULL;
 * typedef struct ASN1_ITEM_st ASN1_ITEM;
 * typedef struct asn1_pctx_st ASN1_PCTX;
-* #undef X509_NAME
-* #undef X509_EXTENSIONS
-* #undef X509_CERT_PAIR
-* #undef PKCS7_ISSUER_AND_SERIAL
-* #undef OCSP_REQUEST
-* #undef OCSP_RESPONSE
-* #undef BIGNUM
 * typedef struct bignum_st BIGNUM;
 * typedef struct bignum_ctx BN_CTX;
 * typedef struct bn_blinding_st BN_BLINDING;
@@ -99,8 +107,6 @@
 * typedef struct DIST_POINT_st DIST_POINT;
 * typedef struct ISSUING_DIST_POINT_st ISSUING_DIST_POINT;
 * typedef struct NAME_CONSTRAINTS_st NAME_CONSTRAINTS;
-* #define DECLARE_PKCS12_STACK_OF(type) /* Nothing */
-* #define IMPLEMENT_PKCS12_STACK_OF(type) /* Nothing */
 * typedef struct crypto_ex_data_st CRYPTO_EX_DATA;
 * typedef int CRYPTO_EX_new(void *parent, void *ptr, CRYPTO_EX_DATA *ad,
 * typedef void CRYPTO_EX_free(void *parent, void *ptr, CRYPTO_EX_DATA *ad,
