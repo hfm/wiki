@@ -4,7 +4,7 @@
 
  * `ssl/ssl_rsa.c`
 
-## codes
+## implemontation
 
 ```c
 int SSL_use_certificate(SSL *ssl, X509 *x)
@@ -26,7 +26,7 @@ int SSL_use_certificate(SSL *ssl, X509 *x)
 ## variables
 
  * `SSL *ssl`
- * `X509 *x`
+ * [X509](../crypto/ossl_typ.h) *x
  * `SSL_F_SSL_USE_CERTIFICATE`
  * `ERR_R_MALLOC_FAILURE`
 
