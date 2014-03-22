@@ -15,7 +15,7 @@ Concurrentは実行状態の複数保持を意味しており、Parallelは実�
 
 しかし、マルチコアの時代にも、様々な理由により全てが並列的に変化しておらず、先のような表現はあくまで限定的なものである。
 
-ref: [parallel と concurrent、並列と並行の違い - 本当は怖い情報科学](http://d.hatena.ne.jp/keisukefukuda/20100915/p1)
+ * [parallel と concurrent、並列と並行の違い - 本当は怖い情報科学](http://d.hatena.ne.jp/keisukefukuda/20100915/p1)
 
 ### 並行的とは
 
@@ -39,6 +39,8 @@ ref: [parallel と concurrent、並列と並行の違い - 本当は怖い情報
          --------------------------------------->
          time
 ```
+
+ * [並行と並列について-並行コンピューティング技法-を読んで - M-Tea](http://www.m-tea.info/2011/03/concurrent-parallel-01.html)
 
 ## マルチスレッド
 
