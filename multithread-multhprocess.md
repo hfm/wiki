@@ -8,7 +8,7 @@
 
 Concurrent ⊃ Parallel (※⊇かもしれない)
 
-Concurrentは実行状態の複数保持を意味しており、Parallelは実行状態の複数保持、かつ同時実行の可能を意味している。
+Concurrentは実行状態の複数保持を意味しており、Parallelは実行状態の複数保持かつ同時実行可能を意味している。
 
 ### 並行的とは
 
