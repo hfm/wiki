@@ -18,6 +18,7 @@ Concurrentは実行状態の複数保持を意味しており、Parallelは実�
 しかし、マルチコアの時代にも、様々な理由により全てが並列的に変化しておらず、先のような表現はあくまで限定的なものである。
 
  * [parallel と concurrent、並列と並行の違い - 本当は怖い情報科学](http://d.hatena.ne.jp/keisukefukuda/20100915/p1)
+ * [第 1 章 マルチスレッドの基礎 (マルチスレッドのプログラミング)](http://docs.oracle.com/cd/E19683-01/816-3976/6ma7iosht/index.html)
 
 ### 並行的とは
 
