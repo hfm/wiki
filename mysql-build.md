@@ -64,15 +64,21 @@ mysqlは特定ディレクトリから`my.cnf`を読み込む。順序は次の�
 
 ### thread_stack
 
-[MySQL 5.6 Reference Manual :: 5.1.4 Server System Variables #sysvar_thread_stack](http://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_thread_stack)
+http://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_thread_stack
 
 弱いマシンでなければデフォルトのままで良さそうなので、my.cnfに書く必要も無さそう。
 
 ### thread_cache_size, table_open_cache
 
-[MySQL 5.6 Reference Manual :: 5.1.4 Server System Variables #sysvar_thread_cache_size](http://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_thread_cache_size)
+http://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_thread_cache_size
 
 MySQL 5.6.8以降はデフォルトでautosizing機能がついている。
+
+### thread_concurrency
+
+http://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_thread_concurrency
+
+5.6.1でdeprecatedになったらしく、5.7では削除されるとのこと。
 
 # master/slave
 
