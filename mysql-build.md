@@ -60,6 +60,14 @@ mysqlは特定ディレクトリから`my.cnf`を読み込む。順序は次の�
 * [MySQL 4.1 リファレンスマニュアル :: 4.1.2 my.cnf オプション設定ファイル](http://dev.mysql.com/doc/refman/4.1/ja/option-files.html)
 * [MySQL 5.1 リファレンスマニュアル :: 3.3.2 オプションファイルの使用](http://dev.mysql.com/doc/refman/5.1/ja/option-files.html)
 
+## variables
+
+### thread_stack
+
+[MySQL :: MySQL 5.6 Reference Manual :: 5.1.4 Server System Variables](http://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_thread_stack)
+
+弱いマシンでなければデフォルトのままで良さそうなので、my.cnfに書く必要も無さそう。
+
 # master/slave
 
 ## 同一ホスト上でmaster/slave構成を取りたい場合
