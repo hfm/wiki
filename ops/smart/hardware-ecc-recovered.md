@@ -1,4 +1,4 @@
-# Hardware ECC recovered
+# Hardware_ECC_Recovered
 
 S.M.A.R.Tの値チェックで出てくる次の値。
 
