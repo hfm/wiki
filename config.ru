@@ -22,9 +22,10 @@ gollum_path = File.expand_path(File.dirname(__FILE__)) # CHANGE THIS TO POINT TO
 Precious::App.set(:gollum_path, gollum_path)
 Precious::App.set(:default_markup, :markdown)
 Precious::App.set(:wiki_options, {
-  :universal_toc => false,
+  :css           => true,
   :live_preview  => false,
   :mathjax       => true,
+  :universal_toc => true,
   :user_icons    => 'gravatar',
 })
 run Precious::App
