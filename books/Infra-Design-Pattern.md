@@ -54,3 +54,4 @@
 ### Keyword
 
  * SPOF (Single point of failure): 単一障害点。ここが故障するとダウンタイムが発生してしまう。
+
