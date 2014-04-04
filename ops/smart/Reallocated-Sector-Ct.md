@@ -7,6 +7,8 @@ ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_
 
 不良セクタを予備セクタへ置換した総数。
 
+ハードドライブがread, write verificationでエラーを起こした際、エラー対象のセクタを予約領域へデータ転送して再配置を施行する。
+再配置の数が多いほど、データのread/writeに影響が出る。
 
 ## ref
 
