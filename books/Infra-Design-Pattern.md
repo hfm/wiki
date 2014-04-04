@@ -1,5 +1,7 @@
 # インフラデザインパターン
 
+[![インフラデザインパターン ~安定稼動に導く127の設計方式 (WEB+DB PRESS plus)](http://ecx.images-amazon.com/images/I/51%2BITF6dZ%2BL._SL160_.jpg) インフラデザインパターン ~安定稼動に導く127の設計方式 (WEB+DB PRESS plus)](http://www.amazon.co.jp/exec/obidos/ASIN/4774162868/hifumiass-22/ref=nosim/)
+
 ## インフラとは？
 
 ### ハードウェア＋OS＋ミドルウェア
