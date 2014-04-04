@@ -1,6 +1,6 @@
 # Current_Pending_Sector
 
-```
+```text
 ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE
 197 Current_Pending_Sector  0x0012   100   100   000    Old_age   Always       -       0
 ```
