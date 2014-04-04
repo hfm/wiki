@@ -2,7 +2,8 @@
 
 S.M.A.R.Tの値チェックで出てくる次の値。
 
-```
+```text
+ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE
 195 Hardware_ECC_Recovered  0x003a   100   100   ---    Old_age   Always       -       579627922
 ```
 
