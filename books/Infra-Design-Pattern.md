@@ -55,3 +55,20 @@
 
  * SPOF (Single point of failure): 単一障害点。ここが故障するとダウンタイムが発生してしまう。
 
+### Documentation
+
+ * 文書化において「ユーザ」を意識すべき（ここで言う「ユーザ」は文書の読み手のこと。）
+ * ユーザの状況を理解し、目的を達成するための過不足ない情報を書き記す
+ * 用語集（類語の氾濫を防ぐ）
+
+### Continuous Improvement Process
+
+[ITIL (Information Technology Infrastructure Library) V3](http://ja.wikipedia.org/wiki/Information_Technology_Infrastructure_Library#ITIL_V3)という基準によるステップの定義。
+
+ 1. 何を測定すべきかを定義
+ 1. 何を測定できるのかを定義
+ 1. データの収集
+ 1. データの処理
+ 1. データの分析
+ 1. 情報の提示と利用
+ 1. 是正処理の実施
