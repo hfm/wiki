@@ -8,3 +8,7 @@ ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_
 ## 意味
 
 hardware ECCを使っても回復できなかったエラー数。
+
+## ref
+
+ * [S.M.A.R.T. Attribute: Reported Uncorrectable Errors | Knowledge Base](http://kb.acronis.com/content/9122)
