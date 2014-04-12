@@ -156,6 +156,27 @@ Master_SSL_Verify_Server_Cert: No
 1 row in set (0.00 sec)
 ```
 
+# mysqldump
+
+## MySQL 5.0でdumpしたらtimezoneがおかしかった。
+
+ * MySQL 4.0のmysqldumpでは出なかった。
+ * MySQL 5.0系のmysqld, mysqldumpでダンプすると、以下の様なTIME_ZONEが前後についてた。
+
+```sql
+# grep TIME_ZONE /root/mysql50.sql
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+...
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+```
+
+`SET TIME_ZONE='+00:00'`...?
+
+以下のブログによると、4.1以降のmysqld (とmysqldump?) の仕様っぽい。
+
+ * [mysqldumpとtimezoneと4.0 - いちいの日記](http://d.hatena.ne.jp/ichii386/20070930/1191149351)
+
 # MySQL 5.6 からの変更点
 
 ## Replication
