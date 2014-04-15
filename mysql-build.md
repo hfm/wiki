@@ -471,7 +471,7 @@ MySQL 4.0だと`TIMEZONE`なんだけど、4.1以降（マイナーバージョ�
 ちなみに5.1からは、masterのtime_zoneまで参照するようになったようで、`4.0 <- 5.1`でmaster/slave構成を取ろうとするとコケてしまった。
 何とか出来る方法はあるんかな。
 
-```
+```sql
 @4.0.30
 mysql> show variables like "time%zone";
 +---------------+-------+
