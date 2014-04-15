@@ -463,3 +463,42 @@ MySQL 5.6.6以降は、古いMySQLをレプリケーションしてはいけな�
 #### [Warning] Slave I/O: Unknown system variable 'SERVER_UUID' on master. A probable cause is that the variable is not supported on the master (version: 5.0.96-log), even though it is on the slave (version: 5.6.16-log), Error_code: 1193
 
 `binlog_checksum`と似た現象。なんでやねん設計。
+
+#### [ERROR] Slave I/O: The slave I/O thread stops because a fatal error is encountered when it try to get the value of TIME_ZONE global variable from master. Error: Unknown system variable 'TIME_ZONE', Error_code: 1193
+
+MySQL 4.0だと`TIMEZONE`なんだけど、4.1以降（マイナーバージョンまでは調べてない）だと`TIME_ZONE`に名前が変わってる。
+
+ちなみに5.1からは、masterのtime_zoneまで参照するようになったようで、`4.0 <- 5.1`でmaster/slave構成を取ろうとするとコケてしまった。
+何とか出来る方法はあるんかな。
+
+```
+@4.0.30
+mysql> show variables like "time%zone";
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| timezone      | JST   |
++---------------+-------+
+
+@4.1.25
++---------------+--------+
+| Variable_name | Value  |
++---------------+--------+
+| time_zone     | SYSTEM |
++---------------+--------+
+
+@5.0.73
++---------------+--------+
+| Variable_name | Value  |
++---------------+--------+
+| time_zone     | SYSTEM |
++---------------+--------+
+
+@5.1.73
++------------------+--------+
+| Variable_name    | Value  |
++------------------+--------+
+| system_time_zone | JST    | ←これなんぞー
+| time_zone        | SYSTEM |
++------------------+--------+
+```
