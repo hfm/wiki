@@ -1,5 +1,15 @@
 # static void err_output(const char *fmt, va_list ap)
 
+## argument
+
+### first
+
+`const char *fmt`...
+
+### second
+
+`va_list ap`...
+
 ## implementation
 
 ```c
