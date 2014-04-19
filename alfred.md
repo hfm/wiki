@@ -1,5 +1,8 @@
 # Alfred
 
+ * [Share your Workflows - Alfred App Community Forum](http://www.alfredforum.com/forum/3-share-your-workflows/)
+ * [Workflows | Packal](http://www.packal.org/workflow-list)
+
 ## Workflow
 
 ### Colors
