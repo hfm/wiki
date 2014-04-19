@@ -1,14 +1,14 @@
 # static void err_output(const char *fmt, va_list ap)
 
+## abstract
+
+エラー出力関数。
+
 ## argument
 
-### first
+### `const char *fmt`
 
-`const char *fmt`...
-
-### second
-
-`va_list ap`...
+### `va_list ap`
 
 ## implementation
 
