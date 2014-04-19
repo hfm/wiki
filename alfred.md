@@ -14,3 +14,10 @@ https://github.com/gharlan/alfred-github-workflow
 
 ![alfred-workflow-github](uploads/alfred-github.png)
 
+## Theme
+
+### Lookfar Solarized Light
+
+http://www.packal.org/theme/lookfar-solarized-light
+
+![alfred-theme-lookfar-solarised-light](uploads/alfred-theme-lookfar-solarised-light.png)
