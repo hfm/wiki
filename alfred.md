@@ -4,4 +4,6 @@
 
 ### Colors
 
-Web: [Colors | Packal](http://www.packal.org/workflow/colors)
+http://www.packal.org/workflow/colors
+
+![alfred-workflow-colors](uploads/alfred-colors.png)
