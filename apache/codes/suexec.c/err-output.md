@@ -34,6 +34,8 @@ static void err_output(const char *fmt, va_list ap)
             lt->tm_year + 1900, lt->tm_mon + 1, lt->tm_mday,
             lt->tm_hour, lt->tm_min, lt->tm_sec);
 
+// log (ストリーム) に対してfmtの書式文字列を出力する。
+//出力時にはapのパラメタリストを変換する。
     vfprintf(log, fmt, ap);
 
     fflush(log);
