@@ -7,14 +7,20 @@
 
 入れたやつ：
 
- * buffers.pl ... 便利なバッファ
- * chanmon.pl ... 複数チャンネルをシングルバッファ/バーに表示できる
- * expand_url.pl ... 短縮URLを展開してくれる。URI::Findが要る
- * highmon.pl ... ハイライトキーワードのみを表示してくれる
- * iset.pl ... weechatの設定一覧をざっと見れたり、編集できたりして便利
- * autoconnect.py ...
- * go.py ... 簡単にチャンネル移動出来る
- * beep.pl ... beep音
+ - buffers.pl 4.5 (Sidebar with list of buffers)
+ - chanmon.pl 2.4 (Channel Monitor)
+ - expand_url.pl 0.5 (Get information on a short URL. Find out where it goes.)
+ - highmon.pl 2.4 (Highlight Monitor)
+ - iset.pl 3.4 (Interactive Set for configuration options)
+ - listsort.pl 0.1 (Sort the output of /list command by user count)
+ - autoconnect.py 0.2.3 (reopens servers and channels opened last time weechat closed)
+ - autosort_buffers.py 1.0 (Automatically keeps buffers grouped by server and sorted by name.)
+ - colorize_nicks.py 14 (Use the weechat nick colors in the chat area)
+ - go.py 1.9 (Quick jump to buffers)
+ - grep.py 0.7.2 (Search in buffers and logs)
+ - listbuffer.py 0.8.1 (A common buffer for /list output.)
+ - prism.py 0.2.7 (Taste the rainbow.)
+ - urlbuf.py 0.1 (A common buffer for received URLs.)
 
 ## 設定
 
