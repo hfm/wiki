@@ -26,13 +26,13 @@
 
 ### 初めから入っているfreenodeを削除
 
-```
+```text
 /server del freenode
 ```
 
 ### join/part/quit を非表示にする
 
-```
+```text
 /set irc.look.smart_filter on 
 /filter add irc_smart * irc_smart_filter *
 /filter add joinquit * irc_join,irc_part,irc_quit *
@@ -40,7 +40,7 @@
 
 ### highlight
 
-```
+```text
 /set weechat.look.highlight "$nick,おっくん"
 ```
 
@@ -57,13 +57,13 @@ sudo python setup.py install # sudo入れないとうまくいかなかった
 
 weechat
 
-```
+```text
 /script notification_center
 ```
 
 ## サーバ追加
 
-```
+```text
 /server add SERVER HOSTNAME/+PORT -ssl -password=ZNC.USERNAME/ZNC.NETWORK:ZNC.PASSWORD -autoconnect
 /set irc.server.SERVER.ssl_verify off
 /save
