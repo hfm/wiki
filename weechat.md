@@ -64,10 +64,10 @@ weechat
 ## サーバ追加
 
 ```
-/server add <server> <hostname>/+<port> -ssl -password=<znc.username>/<znc.network>:<znc.password> -autoconnect
-/set irc.server.<server>.ssl_verify off
+/server add SERVER HOSTNAME/+PORT -ssl -password=ZNC.USERNAME/ZNC.NETWORK:ZNC.PASSWORD -autoconnect
+/set irc.server.SERVER.ssl_verify off
 /save
-/connect <server>
+/connect SERVER
 ```
 
 ## Tips
