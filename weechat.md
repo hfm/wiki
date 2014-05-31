@@ -72,6 +72,14 @@ weechat
 
 ## Tips
 
+### 特定チャンネルの特定のnickを無視する
+
+不要なアラートとか通知飛ばしまくるNICKがいるとたまにこれで無視する。
+
+```plain
+/ignore add NICK SERVER #CHANNEL
+```
+
 ### チャットウィンドウだけコピペしたい for iTerm2
 
 option + commandを押して矩形選択モードを使う。
