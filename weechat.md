@@ -5,22 +5,60 @@
 かつては`weeget`だったけど、今は`script`と打てばパッケージリストが表示されて簡単にインストールできるようになってる。
 `~/.weechat/script/plugins.xml.gz`にダウンロードされるらしい。
 
-入れたやつ：
+### buffers.pl (Sidebar with list of buffers)
 
- - buffers.pl 4.5 (Sidebar with list of buffers)
- - chanmon.pl 2.4 (Channel Monitor)
- - expand_url.pl 0.5 (Get information on a short URL. Find out where it goes.)
- - highmon.pl 2.4 (Highlight Monitor)
- - iset.pl 3.4 (Interactive Set for configuration options)
- - listsort.pl 0.1 (Sort the output of /list command by user count)
- - autoconnect.py 0.2.3 (reopens servers and channels opened last time weechat closed)
- - autosort_buffers.py 1.0 (Automatically keeps buffers grouped by server and sorted by name.)
- - colorize_nicks.py 14 (Use the weechat nick colors in the chat area)
- - go.py 1.9 (Quick jump to buffers)
- - grep.py 0.7.2 (Search in buffers and logs)
- - listbuffer.py 0.8.1 (A common buffer for /list output.)
- - prism.py 0.2.7 (Taste the rainbow.)
- - urlbuf.py 0.1 (A common buffer for received URLs.)
+チャンネルバッファを表示する。
+
+### chanmon.pl (Channel Monitor)
+
+指定したチャンネル（デフォルトはjoinしてる奴全部？）のやりとりが流れてくる。
+
+### expand_url.pl (Get information on a short URL. Find out where it goes.)
+
+tinyurlやbit.lyのような短縮URLが流れてくると、自動でexpandする。
+
+### highmon.pl (Highlight Monitor)
+
+ハイライトキーワードに反応したコメントだけが流れてくる。
+
+### iset.pl (Interactive Set for configuration options)
+
+weechatの設定が一覧表示される。
+設定も変更できるので便利。
+
+### listsort.pl (Sort the output of /list command by user count)
+
+各サーバで`/list`ってやる時に出るチャンネルリストをユーザが多い順にソートしてくれる。
+
+### autosort_buffers.py (Automatically keeps buffers grouped by server and sorted by name.)
+
+buffersのリストを自動sortしてくれる。
+サーバごとに並べてくれるので、新しくチャンネルにjoinした時に便利。
+
+### colorize_nicks.py (Use the weechat nick colors in the chat area)
+
+nickに色を付けてくれるので、発言欄が見やすくなる。
+
+### go.py (Quick jump to buffers)
+
+指定したチャンネルに移動出来る。
+
+### grep.py (Search in buffers and logs)
+
+チャンネルで`/grep hoge`とうつと、ログから`hoge`を漁ってくれる。
+
+### listbuffer.py (A common buffer for /list output.)
+
+`/list`で吐き出した内容をバッファしてくれる。
+
+### urlbuf.py (A common buffer for received URLs.)
+
+joinしてるチャンネルでなんらかのURLが投稿されたら、`#urlbuf`というバッファに貯めこんでくれる。
+なんのURLか文脈がわからないまま保存されるので、あまり役に立ってない。
+
+### prism.py (Taste the rainbow.)
+
+文字列をカラフルに出来たりするジョークツール。
 
 ## 設定
 
