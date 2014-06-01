@@ -126,3 +126,20 @@ tmux上で起動しても大丈夫。
 ### keybindについて
 
 `/key bind ctrl-g /go`ではなく`/key bind ctrl-G /go`でやる。
+
+## atig.rb
+
+- chanmonに要らないやつ
+ - `#twitter` ... メインのタイムライン
+ - `#retweet` ... いろんな人がRTが流れてくるタイムライン
+ - 各種リスト
+- chanmonにあってもいいやつ
+ - `#mention` ... highmonにも流れてくるけど、別にchanmonにあっても構わない
+
+`/chmonitor #channel server`でモニタリングを切り替え出来るので、要らないやつだけ以下のようにoffにする
+
+```text
+/chmonitor #twitter twitter
+/chmonitor #retweet twitter
+/chmonitor #list twitter
+```
