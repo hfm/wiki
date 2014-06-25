@@ -1,6 +1,6 @@
 # RPM Versioning
 
-```shell-session
+```sh
 # rpm -qi ImageMagick-6.5.4.7-7.el6_5.x86_64
 Name        : ImageMagick                  Relocations: (not relocatable)
 Version     : 6.5.4.7                           Vendor: CentOS
@@ -15,4 +15,14 @@ Group       : Applications/Multimedia       Source RPM: ImageMagick-6.5.4.7-7.el
 `Version : 6.5.4.7``Release : 7.el6_5`とある。
 つまり前者がバージョン、後者がリリース番号。
 
-このバージョンの細かいところとリリース番号の細かいところが知りたい。。。
+### RPM File Format
+
+- http://www.rpm.org/max-rpm/ch-rpm-file-format.html
+
+> name-version-release.architecture.rpm
+
+というのは決まってるらしい。
+
+
+このバージョンの細かいところとリリース番号の細かいところが知りたい。。。メジャ、マイナ、パッチ？？？？
+
