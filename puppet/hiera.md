@@ -56,6 +56,6 @@ OpenSource版のPuppetなら`/etc/puppet/hiera.yaml`に設置しても読み込�
   - three
 ```
 
-この場合、Hieraは __上から順番に__ 探していく。
+この場合、Hieraは __上から順番に__ 探していく ([ref](http://docs.puppetlabs.com/hiera/1/hierarchy.html#ordering))
 `one`の中に目的のデータがなければ次の`two`へ、同様の結果であればその次の`three`へと検索対象が遷移する。
 （あるいは`one`そのものが見つからない場合も次の対象を検索するようになるらしい。）
