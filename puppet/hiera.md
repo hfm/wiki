@@ -39,7 +39,7 @@ OpenSource版のPuppetなら`/etc/puppet/hiera.yaml`に設置しても読み込�
 ```
 
 - `:yaml:`にはデータディレクトリの位置を書いている
- - `%{settings::confdir}`は、puppetmasterが所持しているReserved [Variables](http://docs.puppetlabs.com/puppet/latest/reference/lang_facts_and_builtin_vars.html#variables-set-by-the-puppet-master)
+ - `%{settings::confdir}`は、puppetmasterが所持している[Reserved Variables](http://docs.puppetlabs.com/puppet/latest/reference/lang_facts_and_builtin_vars.html#variables-set-by-the-puppet-master)
  - `%{::environment}`は、例えば`production`や`development`等を設定し、hieradataディレクトリ以下に名前に対応したディレクトリを設置する。
 
 
@@ -57,5 +57,6 @@ OpenSource版のPuppetなら`/etc/puppet/hiera.yaml`に設置しても読み込�
 ```
 
 この場合、Hieraは __上から順番に__ 探していく ([ref](http://docs.puppetlabs.com/hiera/1/hierarchy.html#ordering))
+
 `one`の中に目的のデータがなければ次の`two`へ、同様の結果であればその次の`three`へと検索対象が遷移する。
 （あるいは`one`そのものが見つからない場合も次の対象を検索するようになるらしい。）
