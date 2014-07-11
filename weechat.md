@@ -99,6 +99,17 @@ weechat
 /script notification_center
 ```
 
+### split window
+
+5:3:2でmain, chanmon, highmonにしている。
+inputバーは1個でいいのでrootinputを用意する。
+
+ref: http://qiita.com/taketin@github/items/9e8fd1a56507b277c728
+
+```
+/bar add rootinput root bottom 1 0 [buffer_name]+[input_prompt]+(away),[input_search],[input_paste],input_text
+/bar del input
+```
 ## サーバ追加
 
 ```text
