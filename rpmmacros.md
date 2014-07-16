@@ -5,7 +5,7 @@
 ## %{_topdir}
 
 [RPM directory macros](https://fedoraproject.org/wiki/Packaging:RPMMacros?rd=Packaging/RPMMacros#RPM_directory_macros)という項目がある。
-ここによると、
+以下のように書かれている。
 
 ```spec
 %{_topdir}            %{getenv:HOME}/rpmbuild
@@ -16,3 +16,6 @@
 %{_srcrpmdir}         %{_topdir}/SRPMS
 %{_buildrootdir}      %{_topdir}/BUILDROOT
 ```
+
+`%{_topdir}`以外は分かりやすく、この変数を中心としてBUILDやSPECSといったディレクトリを指定しているらしい。
+そして`%{_topdir}`自身は`$HOME`を指している。
