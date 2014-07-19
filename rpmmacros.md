@@ -17,5 +17,5 @@
 %{_buildrootdir}      %{_topdir}/BUILDROOT
 ```
 
-`%{_topdir}`以外は分かりやすく、この変数を中心としてBUILDやSPECSといったディレクトリを指定しているらしい。
-そして`%{_topdir}`自身は`$HOME`を指している。
+そして`%{_topdir}`自身は`$HOME`を指している．
+この変数を中心としてBUILDやSPECSといったディレクトリを指定しているらしい．
