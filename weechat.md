@@ -126,7 +126,7 @@ ref: http://qiita.com/taketin@github/items/9e8fd1a56507b277c728
 
 不要なアラートとか通知飛ばしまくるNICKがいるとたまにこれで無視する。
 
-```plain
+```
 /ignore add NICK SERVER #CHANNEL
 ```
 
