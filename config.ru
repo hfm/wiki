@@ -25,6 +25,7 @@ Precious::App.set(:wiki_options, {
   :css           => true,
   :live_preview  => false,
   :mathjax       => true,
+  :allow_uploads => true,
   :universal_toc => true,
   :user_icons    => 'gravatar',
 })
