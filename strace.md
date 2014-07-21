@@ -14,4 +14,14 @@
 
 ### -ff
 
-> If  the  -o  filename option is in effect, each processes trace is written to filename.pid where pid is the numeric process id of each process.  This is incompatible with -c, since no per-process counts are kept.
+> If the -o filename option is in effect, each processes trace is written to filename.pid where pid is the numeric process id of each process. This is incompatible with -c, since no per-process counts are kept.
+
+`-o filename`オプションが有効の場合，プロセスのトレースごとに`filename.pid` (各プロセスのプロセスID番号) が書き込まれる．
+プロセスごとのカウント数が保持されず，このオプションは`-c`と非互換である．
+
+### -s strsize
+
+> Specify the maximum string size to print (the default is 32). Note that filenames are not considered strings and are always printed in full.
+
+出力されるstringサイズの最大値を指定する（デフォルトは32）．
+ファイル名は文字列に考慮されず，常に完全に出力されることに注意．
