@@ -12,7 +12,7 @@
 
 対象プロセスからfork(2)で生成された子プロセスもトレースする．
 
-### -ff
+### -ff 
 
 > If the -o filename option is in effect, each processes trace is written to filename.pid where pid is the numeric process id of each process. This is incompatible with -c, since no per-process counts are kept.
 
@@ -25,3 +25,9 @@
 
 出力されるstringサイズの最大値を指定する（デフォルトは32）．
 ファイル名は文字列に考慮されず，常に完全に出力されることに注意．
+
+### -p pid
+
+> Attach to the process with the process ID pid and begin tracing. The trace may be terminated at any time by a keyboard interrupt signal (CTRL-C). strace will respond by detaching itself from the traced process(es) leaving it (them) to continue running. Multiple -p options can be used to attach to up to 32 processes in addition to command (which is optional if at least one -p option is given).
+
+指定したPIDのプロセスにアタッチし，トレースを開始する．
