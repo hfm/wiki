@@ -10,6 +10,7 @@
 > 
 > On SunOS 4.x the tracing of vforks is accomplished with some dynamic linking trickery.
 
+対象プロセスからfork(2)で生成された子プロセスもトレースする．
 
 ### -ff
 
