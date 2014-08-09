@@ -31,3 +31,15 @@
 > Attach to the process with the process ID pid and begin tracing. The trace may be terminated at any time by a keyboard interrupt signal (CTRL-C). strace will respond by detaching itself from the traced process(es) leaving it (them) to continue running. Multiple -p options can be used to attach to up to 32 processes in addition to command (which is optional if at least one -p option is given).
 
 指定したPIDのプロセスにアタッチし，トレースを開始する．
+
+### -e expr
+
+```
+[qualifier=][!]value1[,value2]...
+```
+
+`qualifier`には`trace`, `abbrev`, `verbose`, `raw`, `signal`, `read`, `write`等が入る．
+
+`-e trace=open`のように書く．`-eopen`と省略も可能．
+
+#### -e trace=
