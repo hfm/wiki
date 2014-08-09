@@ -9,13 +9,13 @@
 
 http://www.packal.org/workflow/colors
 
-![alfred-workflow-colors](uploads/alfred-colors.png)
+![alfred-workflow-colors](../../uploads/alfred-colors.png)
 
 ### GitHub Workflow
 
 https://github.com/gharlan/alfred-github-workflow
 
-![alfred-workflow-github](uploads/alfred-github.png)
+![alfred-workflow-github](../../uploads/alfred-github.png)
 
 ## Theme
 
@@ -23,4 +23,4 @@ https://github.com/gharlan/alfred-github-workflow
 
 http://www.packal.org/theme/lookfar-solarized-light
 
-![alfred-theme-lookfar-solarised-light](uploads/alfred-theme-lookfar-solarised-light.png)
+![alfred-theme-lookfar-solarised-light](../../uploads/alfred-theme-lookfar-solarised-light.png)
