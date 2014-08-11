@@ -36,3 +36,9 @@
 ## %_smp_mflags
 
 - [_smp_mflags - サトルサトラレ](http://d.hatena.ne.jp/satoru739/20111121/1321940585)
+
+## rpmdevtools
+
+- [革命の日々！ おまえら rpmdev-setuptree を使えという話](http://mkosaki.blog46.fc2.com/blog-entry-1282.html)
+
+これによると，`rpmdevtools`に入っている`rpmdev-setuptree`コマンドで色々よしなにやってくれるらしい．
