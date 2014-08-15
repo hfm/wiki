@@ -74,8 +74,23 @@ OpenSource版のPuppetなら`/etc/puppet/hiera.yaml`に設置しても読み込�
 （あるいは`one`そのものが見つからない場合も次の対象を検索するようになるらしい。）
 
 #### `:backends`
+
+ヒエラルキーを確認する時に使う仕組み．デフォルトは`yaml`．
+
+他にも`json`が選択可能．Custom Backendの仕組みを用いれば，新しいBackendの提供可能．
+
 #### `:logger`
+
+渓谷やデバッグメッセージの送り先を指定する．デフォルトは`console`で，STDERRに送るが，Puppetはこれを`puppet`(puppetのログシステムに送る)に上書きするようになっている．
+
+他に，`noop` (何も出力しない) も選択可能．
+
 #### `:merge_behavior`
+
+各yamlに重複する設定が記述されている際のmergeの挙動を示す．
+
+`native`, `deep`, `deeper`から選択可能．後者ほど，複数の設定を複雑に混合するようになる（`native`だと，片側のみ採用するような挙動もある）．
+
 ### バックエンド用設定
 #### `:yaml`と`:json`
 #### `:puppet`
