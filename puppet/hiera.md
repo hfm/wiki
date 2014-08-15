@@ -87,7 +87,3 @@ OpenSource版のPuppetなら`/etc/puppet/hiera.yaml`に設置しても読み込�
 
 - 各yamlに重複する設定が記述されている際のmergeの挙動を示す．
 - `native`, `deep`, `deeper`から選択可能．後者ほど，複数の設定を複雑に混合するようになる（`native`だと，片側のみ採用するような挙動もある）．
-
-### バックエンド用設定
-#### `:yaml`と`:json`
-#### `:puppet`
