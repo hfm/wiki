@@ -57,7 +57,7 @@ OpenSource版のPuppetなら`/etc/puppet/hiera.yaml`に設置しても読み込�
 
 #### `:hierarchy`
 
-`hiera.yaml`のトップレベルに`:hierarchy`キーとその値を設定することで、Hieraはヒエラルキデータをロードすることが出来る。
+- `hiera.yaml`のトップレベルに`:hierarchy`キーとその値を設定することで、Hieraはヒエラルキデータをロードすることが出来る。
 
 例：
 
@@ -68,28 +68,25 @@ OpenSource版のPuppetなら`/etc/puppet/hiera.yaml`に設置しても読み込�
   - three
 ```
 
-この場合、Hieraは __上から順番に__ 探していく ([ref](http://docs.puppetlabs.com/hiera/1/hierarchy.html#ordering))
-
-`one`の中に目的のデータがなければ次の`two`へ、同様の結果であればその次の`three`へと検索対象が遷移する。
-（あるいは`one`そのものが見つからない場合も次の対象を検索するようになるらしい。）
+- この場合、Hieraは __上から順番に__ 探していく ([ref](http://docs.puppetlabs.com/hiera/1/hierarchy.html#ordering))
+- `one`の中に目的のデータがなければ次の`two`へ、同様の結果であればその次の`three`へと検索対象が遷移する。
+  - （あるいは`one`そのものが見つからない場合も次の対象を検索するようになるらしい。）
 
 #### `:backends`
 
-ヒエラルキーを確認する時に使う仕組み．デフォルトは`yaml`．
-
-他にも`json`が選択可能．Custom Backendの仕組みを用いれば，新しいBackendの提供可能．
+- ヒエラルキーを確認する時に使う仕組み．デフォルトは`yaml`．
+- 他にも`json`が選択可能．Custom Backendの仕組みを用いれば，新しいBackendの提供可能．
 
 #### `:logger`
 
-渓谷やデバッグメッセージの送り先を指定する．デフォルトは`console`で，STDERRに送るが，Puppetはこれを`puppet`(puppetのログシステムに送る)に上書きするようになっている．
-
-他に，`noop` (何も出力しない) も選択可能．
+- 渓谷やデバッグメッセージの送り先を指定する
+- デフォルトは`console`で，STDERRに送るが，Puppetはこれを`puppet`(puppetのログシステムに送る)に上書きするようになっている．
+- 他に，`noop` (何も出力しない) も選択可能．
 
 #### `:merge_behavior`
 
-各yamlに重複する設定が記述されている際のmergeの挙動を示す．
-
-`native`, `deep`, `deeper`から選択可能．後者ほど，複数の設定を複雑に混合するようになる（`native`だと，片側のみ採用するような挙動もある）．
+- 各yamlに重複する設定が記述されている際のmergeの挙動を示す．
+- `native`, `deep`, `deeper`から選択可能．後者ほど，複数の設定を複雑に混合するようになる（`native`だと，片側のみ採用するような挙動もある）．
 
 ### バックエンド用設定
 #### `:yaml`と`:json`
