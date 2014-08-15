@@ -13,7 +13,7 @@ Hieraはkey/value型(yaml, json)の設定データ検索ツール。
 - オリジナルyumserverのアドレス
 - production, integration, development環境において値の異なる変数
 
-## 導入
+## インストール
 
 RHEL系ならyumから入る。
 詳細は[こちら](http://docs.puppetlabs.com/hiera/1/installing.html)。
