@@ -22,11 +22,15 @@ RHEL系ならyumから入る。
 
 ### hiera.yaml
 
-http://docs.puppetlabs.com/hiera/1/configuring.html
+url: http://docs.puppetlabs.com/hiera/1/configuring.html
+
+#### 設置場所
 
 hieraに関するデータディレクトリやデータ形式を決定するメタデータhiera.yamlの設置場所は、デフォルトで`$confdir/hiera.yaml`
 OpenSource版のPuppetなら`/etc/puppet/hiera.yaml`に設置しても読み込まれる。
 また、`puppet.conf`にhiera.yamlの位置を指定することも可能。
+
+#### 記法
 
 例えば以下のような設定が記述される。デフォルト値から変更しないものは省いても良い。
 
