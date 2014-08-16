@@ -117,3 +117,54 @@ Hieraは次のようなルールでヒエラルキー中の各要素をチェッ
   - 配列の検索の場合，Hieraは検索を続け，発見したすべての値を配列にして返す．
   - ハッシュの検索の場合，Hieraは検索を続け，要求するすべての値をハッシュにし，ハッシュでない値が見つかったらエラーを投げる．見つかったすべてのハッシュはマージされ，結果を返す．
 1. Hieraがすべてのヒエラルキーからデータを見つけられなければ，（もしあれば）デフォルト値を使う．デフォルト値が無い場合はエラーを返す．
+
+### Multiple Backends
+
+複数のBackendを`hiera.yaml`に記述出来る．
+
+```yaml
+---
+:backends:
+  - yaml
+  - json
+:hierarchy:
+  - one
+  - two
+  - three
+```
+
+上記のような設定の場合，次のデータソースが順番にチェックされる．
+
+1. `one.yaml`
+1. `two.yaml`
+1. `three.yaml`
+1. `one.json`
+1. `two.json`
+1. `three.json`
+
+### Example
+
+例えば以下のようなヒエラルキーを仮定する．
+
+```yaml
+---
+:hierarchy:
+  - "%{::clientcert}"
+  - "%{::environment}"
+  - "virtual_%{::is_virtual}"
+  - common
+```
+
+そして，clientcertには`app001.example.com`, `app002.example.com`, `db001.example.com`を仮定する．
+environmentとしてproduction, developmentを仮定する．
+virtual環境はtrueとする．
+
+すると，データソースは次のようになる．
+
+- `app001.example.com`
+- `app002.example.com`
+- `db001.example.com`
+- `production.yaml`
+- `development.yaml`
+- `virtual_true.yaml`
+- `common.yaml`
