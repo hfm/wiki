@@ -1,6 +1,4 @@
-# Hiera
-
-http://docs.puppetlabs.com/hiera/1/index.html
+# [Hiera](http://docs.puppetlabs.com/hiera/1/index.html)
 
 ## Overview
 
@@ -20,11 +18,9 @@ RHEL系ならyumから入る。
 
 ## 設定ファイル
 
-### hiera.yaml
+### [hiera.yaml](http://docs.puppetlabs.com/hiera/1/configuring.html)
 
 hieraに関するデータディレクトリやデータ形式を決定するメタデータ
-
-url: http://docs.puppetlabs.com/hiera/1/configuring.html
 
 #### 設置場所
 
@@ -44,6 +40,9 @@ OpenSource版のPuppetなら`/etc/puppet/hiera.yaml`に設置しても読み込�
 :yaml:
   :datadir: "%{settings::confdir}/hieradata/%{::environment}"
 :hierarchy:
+  - "%{::clientcert}"
+  - "%{::environment}"
+  - "virtual_%{::is_virtual}"
   - common
 ```
 
@@ -87,3 +86,34 @@ OpenSource版のPuppetなら`/etc/puppet/hiera.yaml`に設置しても読み込�
 
 - 各yamlに重複する設定が記述されている際のmergeの挙動を示す．
 - `native`, `deep`, `deeper`から選択可能．後者ほど，複数の設定を複雑に混合するようになる（`native`だと，片側のみ採用するような挙動もある）．
+
+## [ヒエラルキー](https://docs.puppetlabs.com/hiera/1/hierarchy.html)
+
+Hieraはデータを探す時の順序立てられた階層を決めるのに使う．
+
+### Terminology
+
+#### Static data source
+
+静的に決定されたヒエラルキー要素．
+全ノードで同じデータを示す．
+`common`が該当する．
+
+#### Dynamic data source
+
+動的に決定されたヒエラルキー要素．
+ノードごとに異なるデータになる．
+`"%{::environment}"`等が該当する．
+特に`"%{::clientcert}"`は各ノードでユニークな値になる．
+
+### Ordering
+
+Hieraは次のようなルールでヒエラルキー中の各要素をチェックする．
+
+1. データソースがヒエラルキー中に見つからなければ，次のデータソースへ移動する
+1. データソースが存在しても，目的のものでなければ，次のデータソースへ移動する
+1. 値が見つかると，次の動作を取る
+  - 優先度が普通の検索の場合，Hieraは最初の（リクエストしたデータを保有した）データソースでストップし，その値を返す．
+  - 配列の検索の場合，Hieraは検索を続け，発見したすべての値を配列にして返す．
+  - ハッシュの検索の場合，Hieraは検索を続け，要求するすべての値をハッシュにし，ハッシュでない値が見つかったらエラーを投げる．見つかったすべてのハッシュはマージされ，結果を返す．
+1. Hieraがすべてのヒエラルキーからデータを見つけられなければ，（もしあれば）デフォルト値を使う．デフォルト値が無い場合はエラーを返す．
