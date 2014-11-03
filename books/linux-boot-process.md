@@ -218,6 +218,8 @@ boot_drive_check:
 	 * jump to 07C0:0000 instead of 0000:7C00.
 	 */
 	ljmp	$0, $real_start
+```
+```asm
 real_start:
 	/* set up %ds and %ss as offset from 0 */
 	xorw	%ax, %ax
@@ -225,6 +227,37 @@ real_start:
 	movw	%ax, %ss
 	/* set up the REAL stack */
 	movw	$GRUB_BOOT_MACHINE_STACK_SEG, %sp
+	sti		/* we're safe again */
+	/*
+	 *  Check if we have a forced disk reference here
+	 */
+	movb   boot_drive, %al
+	cmpb	$0xff, %al
+	je	1f
+	movb	%al, %dl
+1:
+	/* save drive reference first thing! */
+	pushw	%dx
+	/* print a notification message on the screen */
+	MSG(notification_string)
+	/* set %si to the disk address packet */
+	movw	$disk_address_packet, %si
+	/* check if LBA is supported */
+	movb	$0x41, %ah
+	movw	$0x55aa, %bx
+	int	$0x13
+	/*
+	 *  %dl may have been clobbered by INT 13, AH=41H.
+	 *  This happens, for example, with AST BIOS 1.04.
+	 */
+	popw	%dx
+	pushw	%dx
+	/* use CHS if fails */
+	jc	LOCAL(chs_mode)
+	cmpw	$0xaa55, %bx
+	jne	LOCAL(chs_mode)
+	andw	$1, %cx
+	jz	LOCAL(chs_mode)
 ```
 
 ### 分からなかった用語・意味を忘れてた単語
