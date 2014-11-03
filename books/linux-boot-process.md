@@ -120,7 +120,16 @@ CPUやメモリの環境設定を設定していくにつれて，C言語のプ�
 
 Linuxカーネルはディスクに圧縮ファイルとして保存されているため，カーネル起動前に展開しなければならない．
 
+### BIOSとUEFI
 
+PCの電源を入れてからカーネルが起動するまでの処理は，
+
+```
+BIOS -> Boot Sector -> Boot Loader -> Kernel
+```
+
+である．最近はBIOSに代わってUEFI (後述) がマザーボードに搭載される場合もあるらしい．
+「Linuxのブートプロセスをみる」ではBIOSを前提に書かれている．
 
 ### ブートローダの種類
 
@@ -153,3 +162,9 @@ Linux以外にもBSD系OSもサポートしている．
 GRUB 1系と2系は直接の親子関係は無いらしい．
 むしろGRUB2はfrom scratchとのこと．
 「Linuxのブートプロセスを見る」では，Fedora17で使われているGRUB2のブートローダ(ver 2.00~beta4)の動作を解説する．
+
+### 分からなかった用語・意味を忘れてた単語
+
+- UEFI
+  - [Unified Extensible Firmware Interface - Wikipedia](http://ja.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface)
+  - IntelアーキベースのMacではEFI (UEFIの元となる規格) らしい
