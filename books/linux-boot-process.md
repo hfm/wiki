@@ -177,6 +177,54 @@ GRUBカーネルを読み込んで起動するまでが仕事．
 	   in real mode. */
 	.code16
 .globl _start, start;
+_start:
+start:
+	/*
+	 * _start is loaded at 0x7c00 and is jumped to with CS:IP 0:0x7c00
+	 */
+	/*
+	 * Beginning of the sector is compatible with the FAT/HPFS BIOS
+	 * parameter block.
+	 */
+	jmp	LOCAL(after_BPB)
+```
+
+```asm
+LOCAL(after_BPB):
+/* general setup */
+	cli		/* we're not safe here! */
+        /*
+         * This is a workaround for buggy BIOSes which don't pass boot
+         * drive correctly. If GRUB is installed into a HDD, check if
+         * DL is masked correctly. If not, assume that the BIOS passed
+         * a bogus value and set DL to 0x80, since this is the only
+         * possible boot drive. If GRUB is installed into a floppy,
+         * this does nothing (only jump).
+         */
+	. = _start + GRUB_BOOT_MACHINE_DRIVE_CHECK
+boot_drive_check:
+        jmp     3f	/* grub-setup may overwrite this jump */
+        testb   $0x80, %dl
+        jz      2f
+3:
+	/* Ignore %dl different from 0-0x0f and 0x80-0x8f.  */
+	testb   $0x70, %dl
+	jz      1f
+2:	
+        movb    $0x80, %dl
+1:
+	/*
+	 * ljmp to the next instruction because some bogus BIOSes
+	 * jump to 07C0:0000 instead of 0000:7C00.
+	 */
+	ljmp	$0, $real_start
+real_start:
+	/* set up %ds and %ss as offset from 0 */
+	xorw	%ax, %ax
+	movw	%ax, %ds
+	movw	%ax, %ss
+	/* set up the REAL stack */
+	movw	$GRUB_BOOT_MACHINE_STACK_SEG, %sp
 ```
 
 ### 分からなかった用語・意味を忘れてた単語
@@ -184,3 +232,6 @@ GRUBカーネルを読み込んで起動するまでが仕事．
 - UEFI
   - [Unified Extensible Firmware Interface - Wikipedia](http://ja.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface)
   - IntelアーキベースのMacではEFI (UEFIの元となる規格) らしい
+- アセンブリ言語の`testb`や`movw`の最後の英文字は`b, w, l`の3つある
+  - いずれもコピーするデータの大きさを表す修飾子である
+  - それぞれ1バイト，2バイト，4バイト
