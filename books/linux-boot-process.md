@@ -260,6 +260,9 @@ real_start:
 	jz	LOCAL(chs_mode)
 ```
 
+- `MSG(notification_string)`の行が読み込まれると，画面に`GRUB`の4文字が表示される
+  - たまにkickstartをミスった時に，GRUBの4文字で止まるケースがあったけど，ここだったのか
+
 ### 分からなかった用語・意味を忘れてた単語
 
 - UEFI
