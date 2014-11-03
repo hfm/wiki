@@ -160,6 +160,16 @@ BIOS -> Boot Sector -> Boot Loader -> Kernel
 
 「Linuxのブートプロセスを見る」では，Fedora17で使われているGRUB2のブートローダ(ver 2.00~beta4)の動作を解説する．
 
+### GRUB2
+
+#### MBR
+
+Master Boot Recordのこと．ブートセクタの一種で，ディスクの先頭セクタに書かれた512バイトの領域を指す．
+中にはブートローダの第一段階とパーティションテーブルが書かれている．
+GRUBカーネルを読み込んで起動するまでが仕事．
+
+[`grub-core/boot/i386/pc/boot.S`](https://chromium.googlesource.com/chromiumos/third_party/grub2/+/11508780425a8cd9a8d40370e2d2d4f458917a73/grub-core/boot/i386/pc/boot.S)にMBRのコードが記載されている．
+
 ### 分からなかった用語・意味を忘れてた単語
 
 - UEFI
