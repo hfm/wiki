@@ -219,6 +219,9 @@ boot_drive_check:
 	 */
 	ljmp	$0, $real_start
 ```
+
+- `cli`は割り込み禁止の命令．後述の`sti`と対比するものっぽい．
+
 ```asm
 real_start:
 	/* set up %ds and %ss as offset from 0 */
@@ -260,6 +263,7 @@ real_start:
 	jz	LOCAL(chs_mode)
 ```
 
+- `sti`は割り込み許可の命令．`cli｀と対比するものかな．
 - `MSG(notification_string)`の行が読み込まれると，画面に`GRUB`の4文字が表示される
   - たまにkickstartをミスった時に，GRUBの4文字で止まるケースがあったけど，ここだったのか
 
