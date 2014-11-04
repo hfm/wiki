@@ -170,8 +170,6 @@ GRUBカーネルを読み込んで起動するまでが仕事．
 
 [`grub-core/boot/i386/pc/boot.S`](https://chromium.googlesource.com/chromiumos/third_party/grub2/+/11508780425a8cd9a8d40370e2d2d4f458917a73/grub-core/boot/i386/pc/boot.S)にMBRのコードが記載されている．
 
-例えば以下は，コメントアウトにある通り，16bit命令であることをGASに教えている．
-
 ```asm
 	/* Tell GAS to generate 16-bit instructions so that this code works
 	   in real mode. */
@@ -188,6 +186,8 @@ start:
 	 */
 	jmp	LOCAL(after_BPB)
 ```
+
+- `.code16`は，コメントアウトにある通り，16bit命令であることをGASに教えている．
 
 ```asm
 LOCAL(after_BPB):
