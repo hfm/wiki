@@ -271,6 +271,38 @@ real_start:
 
 - 2セクタ目以降には`core.img`というファイルデータがある
 
+```asm
+	/* Tell GAS to generate 16-bit instructions so that this code works
+	   in real mode. */
+	.code16
+	.globl	start, _start
+start:
+_start:
+	/*
+	 * _start is loaded at 0x2000 and is jumped to with
+	 * CS:IP 0:0x2000 in kernel.
+	 */
+	/*
+	 * we continue to use the stack for boot.img and assume that
+	 * some registers are set to correct values. See boot.S
+	 * for more information.
+	 */
+	/* save drive reference first thing! */
+	pushw	%dx
+	/* print a notification message on the screen */
+	pushw	%si
+	MSG(notification_string)
+	popw	%si
+	/* this sets up for the first run through "bootloop" */
+	movw	$LOCAL(firstlist), %di
+	/* save the sector number of the second sector in %ebp */
+	movl	(%di), %ebp
+```
+
+- 参考
+  - https://wiki.gentoo.org/wiki/GRUB2_Migration/ja
+  - https://help.ubuntu.com/community/Grub2/Installing
+
 ### 分からなかった用語・意味を忘れてた単語
 
 - UEFI
