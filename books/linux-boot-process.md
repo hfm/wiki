@@ -299,6 +299,10 @@ _start:
 	movl	(%di), %ebp
 ```
 
+### GRUB kernel
+
+[grub-core/kern/i386/pc/startup.S](https://chromium.googlesource.com/chromiumos/third_party/grub2/+/11508780425a8cd9a8d40370e2d2d4f458917a73/grub-core/kern/i386/pc/startup.S)の`start:`から始まる．
+
 - 参考
   - https://wiki.gentoo.org/wiki/GRUB2_Migration/ja
   - https://help.ubuntu.com/community/Grub2/Installing
