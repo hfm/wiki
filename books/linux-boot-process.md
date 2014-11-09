@@ -303,6 +303,18 @@ _start:
 
 [grub-core/kern/i386/pc/startup.S](https://chromium.googlesource.com/chromiumos/third_party/grub2/+/11508780425a8cd9a8d40370e2d2d4f458917a73/grub-core/kern/i386/pc/startup.S)の`start:`から始まる．
 
+```
++--------+---------+---------------+-------------- ... ----+
+| boot   | setup   | decompression | compressed            |
+| sector | routine | routine       | kernel                |
++--------+---------+---------------+-------------- ... ----+
+出典：「Linuxのブートプロセスを見る」図2-2　カーネルファイルの構造
+より作成した図
+```
+
+上記の図の詳細は多分これ？
+
+- [vmlinux - Wikipedia, the free encyclopedia](http://en.wikipedia.org/wiki/Vmlinux)
 - 参考
   - https://wiki.gentoo.org/wiki/GRUB2_Migration/ja
   - https://help.ubuntu.com/community/Grub2/Installing
