@@ -299,6 +299,10 @@ _start:
 	movl	(%di), %ebp
 ```
 
+- 参考
+  - https://wiki.gentoo.org/wiki/GRUB2_Migration/ja
+  - https://help.ubuntu.com/community/Grub2/Installing
+
 ### GRUB kernel
 
 [grub-core/kern/i386/pc/startup.S](https://chromium.googlesource.com/chromiumos/third_party/grub2/+/11508780425a8cd9a8d40370e2d2d4f458917a73/grub-core/kern/i386/pc/startup.S)の`start:`から始まる．
@@ -315,10 +319,24 @@ _start:
 上記の図の詳細は多分これ？
 
 - [vmlinux - Wikipedia, the free encyclopedia](http://en.wikipedia.org/wiki/Vmlinux)
-- 参考
-  - https://wiki.gentoo.org/wiki/GRUB2_Migration/ja
-  - https://help.ubuntu.com/community/Grub2/Installing
 
+`hexdump -C カーネルファイルのパス名 | less`と書いてあったのだけど，CentOS6だと`/boot/vmlinuz-2.6.32-431.el6.x86_64`でいいのかな．
+
+```
+[hfm@sc ~]$ hexdump -C /boot/vmlinuz-2.6.32-431.el6.x86_64 | head -12
+00000000  ea 05 00 c0 07 8c c8 8e  d8 8e c0 8e d0 31 e4 fb  |.............1..|
+00000010  fc be 2d 00 ac 20 c0 74  09 b4 0e bb 07 00 cd 10  |..-.. .t........|
+00000020  eb f2 31 c0 cd 16 cd 19  ea f0 ff 00 f0 44 69 72  |..1..........Dir|
+00000030  65 63 74 20 62 6f 6f 74  69 6e 67 20 66 72 6f 6d  |ect booting from|
+00000040  20 66 6c 6f 70 70 79 20  69 73 20 6e 6f 20 6c 6f  | floppy is no lo|
+00000050  6e 67 65 72 20 73 75 70  70 6f 72 74 65 64 2e 0d  |nger supported..|
+00000060  0a 50 6c 65 61 73 65 20  75 73 65 20 61 20 62 6f  |.Please use a bo|
+00000070  6f 74 20 6c 6f 61 64 65  72 20 70 72 6f 67 72 61  |ot loader progra|
+00000080  6d 20 69 6e 73 74 65 61  64 2e 0d 0a 0a 52 65 6d  |m instead....Rem|
+00000090  6f 76 65 20 64 69 73 6b  20 61 6e 64 20 70 72 65  |ove disk and pre|
+000000a0  73 73 20 61 6e 79 20 6b  65 79 20 74 6f 20 72 65  |ss any key to re|
+000000b0  62 6f 6f 74 20 2e 20 2e  20 2e 0d 0a 00 00 00 00  |boot . . .......|
+```
 ### 分からなかった用語・意味を忘れてた単語
 
 - UEFI
