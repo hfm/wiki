@@ -308,6 +308,7 @@ _start:
 [grub-core/kern/i386/pc/startup.S](https://chromium.googlesource.com/chromiumos/third_party/grub2/+/11508780425a8cd9a8d40370e2d2d4f458917a73/grub-core/kern/i386/pc/startup.S)の`start:`から始まる．
 
 ```
+512bytes
 +--------+---------+---------------+-------------- ... ----+
 | boot   | setup   | decompression | compressed            |
 | sector | routine | routine       | kernel                |
@@ -320,7 +321,7 @@ _start:
 
 - [vmlinux - Wikipedia, the free encyclopedia](http://en.wikipedia.org/wiki/Vmlinux)
 
-`hexdump -C カーネルファイルのパス名 | less`と書いてあったのだけど，CentOS6だと`/boot/vmlinuz-2.6.32-431.el6.x86_64`でいいのかな．
+`hexdump -C カーネルファイルのパス名 | less`と書いてあったのだけど，CentOS6だと`/boot/vmlinuz-2.6.32-431.el6.x86_64`でいいのかな，と思ってhexdumpしたみた．
 
 ```
 [hfm@sc ~]$ hexdump -C /boot/vmlinuz-2.6.32-431.el6.x86_64 | head -12
@@ -337,6 +338,14 @@ _start:
 000000a0  73 73 20 61 6e 79 20 6b  65 79 20 74 6f 20 72 65  |ss any key to re|
 000000b0  62 6f 6f 74 20 2e 20 2e  20 2e 0d 0a 00 00 00 00  |boot . . .......|
 ```
+
+- ここにある`Direct booting from...`と続く文の箇所(512バイト)は，かつてブートプログラムが書かれていた領域らしい．  
+一番最初にリリースされたLinuxカーネルにはフロッピーからブートするブートセクタが含まれていたらしく，そのためのものだったとか．  
+今の時代，フロッピーからブートすることは無いという判断から上記の文字に置き換わったらしい．
+- 圧縮カーネルはgzipで圧縮されているらしい．
+- わざわざ圧縮する理由は，容量に制限のある組み込み系への考慮？とのこと
+- 上図の通り，ブートセクタは512バイト．途中，497バイト目から2セクタ目の途中までにかけて，カーネルヘッダというデータ領域になっている
+
 ### 分からなかった用語・意味を忘れてた単語
 
 - UEFI
