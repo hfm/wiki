@@ -121,3 +121,35 @@ irb(main):020:1>   self
 irb(main):021:1> end
 => MyClass
 ```
+
+### public, private
+
+```irb
+irb(main):001:0> class A
+irb(main):002:1>   def public_method
+irb(main):003:2>     self.private_method
+irb(main):004:2>   end
+irb(main):005:1>
+irb(main):006:1*   private
+irb(main):007:1>
+irb(main):008:1*   def private_method; end
+irb(main):009:1> end
+=> :private_method
+irb(main):010:0> A.new.public_method
+NoMethodError: private method `private_method' called for #<A:0x007fc0fb1c8838>
+        from (irb):3:in `public_method'
+        from (irb):10
+        from /Users/hfm/.rbenv/versions/2.1.3/bin/irb:11:in `<main>'
+irb(main):011:0> class B
+irb(main):012:1>   def public_method
+irb(main):013:2>     private_method
+irb(main):014:2>   end
+irb(main):015:1>
+irb(main):016:1*   private
+irb(main):017:1>
+irb(main):018:1*   def private_method; end
+irb(main):019:1> end
+=> :private_method
+irb(main):020:0> B.new.public_method
+=> nil
+```
