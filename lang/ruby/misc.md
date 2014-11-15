@@ -113,3 +113,11 @@ irb(main):017:0> self.class
 => Object
 ```
 
+`MyClass`のserfは当然`MyClass`
+
+```irb
+irb(main):019:0> class MyClass
+irb(main):020:1>   self
+irb(main):021:1> end
+=> MyClass
+```
