@@ -159,7 +159,7 @@ irb(main):020:0> B.new.public_method
 ### include order
 
 ```irb
-rb(main):001:0> module Printable
+irb(main):001:0> module Printable
 irb(main):002:1>   def print
 irb(main):003:2>     puts "print"
 irb(main):004:2>   end
