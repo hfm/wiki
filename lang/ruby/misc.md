@@ -155,3 +155,67 @@ irb(main):019:1> end
 irb(main):020:0> B.new.public_method
 => nil
 ```
+
+### include order
+
+```irb
+rb(main):001:0> module Printable
+irb(main):002:1>   def print
+irb(main):003:2>     puts "print"
+irb(main):004:2>   end
+irb(main):005:1>
+irb(main):006:1*   def prepare_cover
+irb(main):007:2>     puts "prepare_cover"
+irb(main):008:2>   end
+irb(main):009:1> end
+=> :prepare_cover
+irb(main):010:0> module Document
+irb(main):011:1>   def print_to_screen
+irb(main):012:2>     prepare_cover
+irb(main):013:2>     format_for_screen
+irb(main):014:2>     print
+irb(main):015:2>   end
+irb(main):016:1>
+irb(main):017:1*
+irb(main):018:1*   def format_for_screen
+irb(main):019:2>     puts "format_for_screen"
+irb(main):020:2>   end
+irb(main):021:1>
+irb(main):022:1*   def print
+irb(main):023:2>     puts "Document print"
+irb(main):024:2>   end
+irb(main):025:1> end
+=> :print
+irb(main):026:0> class Book
+irb(main):027:1>   include Document
+irb(main):028:1>   include Printable
+irb(main):029:1>
+irb(main):030:1*   puts "Book"
+irb(main):031:1> end
+Book
+=> nil
+irb(main):032:0> b = Book.new
+=> #<Book:0x007ff7fc0cf548>
+irb(main):033:0> b.print_to_screen
+prepare_cover
+format_for_screen
+print
+=> nil
+irb(main):034:0> Book.ancestors
+=> [Book, Printable, Document, Object, Kernel, BasicObject]
+irb(main):043:0> class Neobook
+irb(main):044:1>   include Printable
+irb(main):045:1>   include Document
+irb(main):046:1>
+irb(main):047:1*   puts "NeoBook"
+irb(main):048:1> end
+NeoBook
+=> nil
+irb(main):049:0> n = Neobook.new
+=> #<Neobook:0x007ff7fb8541e8>
+irb(main):050:0> n.print_to_screen
+prepare_cover
+format_for_screen
+Document print
+=> nil
+```
