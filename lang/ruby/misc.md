@@ -124,6 +124,8 @@ irb(main):021:1> end
 
 ### public, private
 
+明示的な`self`を使ってprivateメソッドは呼べないが，暗黙的なレシーバ`self`なら可能．
+
 ```irb
 irb(main):001:0> class A
 irb(main):002:1>   def public_method
