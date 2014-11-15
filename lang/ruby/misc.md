@@ -158,6 +158,8 @@ irb(main):020:0> B.new.public_method
 
 ### include order
 
+重複したdef名がある場合，includeの順序によっては継承チェーンの関係で，想定とは異なるメソッドが呼ばれてしまう可能性がある．
+
 ```irb
 irb(main):001:0> module Printable
 irb(main):002:1>   def print
