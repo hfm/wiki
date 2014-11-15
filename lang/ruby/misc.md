@@ -221,3 +221,20 @@ format_for_screen
 Document print
 => nil
 ```
+
+## call method dynamically
+
+```irb
+irb(main):001:0> class MyClass
+irb(main):002:1>   def my_method(args)
+irb(main):003:2>     args * 2
+irb(main):004:2>   end
+irb(main):005:1> end
+=> :my_method
+irb(main):006:0> obj = MyClass.new
+=> #<MyClass:0x007fce6a852808>
+irb(main):007:0> obj.my_method(3)
+=> 6
+irb(main):008:0> obj.send(:my_method, 3)
+=> 6
+```
