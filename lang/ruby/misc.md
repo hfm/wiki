@@ -21,7 +21,7 @@ irb(main):009:0> obj.instance_variables
 
 `MyClass`をnewした時点では，objのinstance_variablesは何もないが，my_method実行後に`@v`が現れていることが分かる．
 
-## 
+## path to constant
 
 ```irb
 irb(main):029:0> module M
