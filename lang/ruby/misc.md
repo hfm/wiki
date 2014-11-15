@@ -104,7 +104,7 @@ irb(main):013:0> obj.testing_self
 => #<MyClass:0x007fc40420e070 @var=11>
 ```
 
-class
+irbはmainというオブジェクトの内部から実行されている．
 
 ```irb
 irb(main):016:0> self
@@ -112,3 +112,4 @@ irb(main):016:0> self
 irb(main):017:0> self.class
 => Object
 ```
+
