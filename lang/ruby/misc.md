@@ -66,3 +66,19 @@ irb(main):050:0> Class.superclass
 => Module
 ```
 
+```irb
+irb(main):056:0> Object.class
+=> Class
+irb(main):057:0> Module.superclass
+=> Object
+irb(main):058:0> Class.class
+=> Class
+irb(main):059:0> class MyClass; end
+=> nil
+irb(main):060:0> obj = MyClass.new
+=> #<MyClass:0x007f9f831bc888>
+irb(main):061:0> obj.instance_variable_set
+obj.instance_variable_set
+irb(main):061:0> obj.instance_variable_set("@x", 10)
+=> 10
+```
