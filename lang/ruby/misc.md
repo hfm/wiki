@@ -82,3 +82,33 @@ obj.instance_variable_set
 irb(main):061:0> obj.instance_variable_set("@x", 10)
 => 10
 ```
+
+## self
+
+```irb
+irb(main):001:0> class MyClass
+irb(main):002:1>   def testing_self
+irb(main):003:2>     @var = 10
+irb(main):004:2>     my_method
+irb(main):005:2>     self
+irb(main):006:2>   end
+irb(main):007:1>
+irb(main):008:1*   def my_method
+irb(main):009:2>     @var = @var + 1
+irb(main):010:2>   end
+irb(main):011:1> end
+=> :my_method
+irb(main):012:0> obj = MyClass.new
+=> #<MyClass:0x007fc40420e070>
+irb(main):013:0> obj.testing_self
+=> #<MyClass:0x007fc40420e070 @var=11>
+```
+
+class
+
+```irb
+irb(main):016:0> self
+=> main
+irb(main):017:0> self.class
+=> Object
+```
