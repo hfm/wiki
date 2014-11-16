@@ -281,4 +281,31 @@ irb(main):015:0> puts table.to_text
 | Italy   | Chianti  |
 +--------------------+
 => nil
+talk_simple(a,b)を呼び出した
+(ブロックを渡した)
+=> nil
+irb(main):011:0> require 'ruport'
+=> true
+irb(main):012:0> table = Ruport::Data::Table.new :column_names => ["country", "wine"],
+irb(main):013:0*                                 :data => [["France", "Bordeaux"],
+irb(main):014:1*                                           ["Italy", "Chianti"]]
+=> #<Ruport::Data::Table:0x007fa6d3874fe8 @column_names=["country", "wine"], @record_class="Ruport::Data::Record", @data=[#<Ruport::Data::Record:0x007fa6d3874368 @attributes=["country", "wine"], @data={"country"=>"France", "wine"=>"Bordeaux"}>, #<Ruport::Data::Record:0x007fa6d38738c8 @attributes=["country", "wine"], @data={"country"=>"Italy", "wine"=>"Chianti"}>]>
+irb(main):015:0> puts table.to_text
++--------------------+
+| country |   wine   |
++--------------------+
+| France  | Bordeaux |
+| Italy   | Chianti  |
++--------------------+
+=> nil
+irb(main):016:0>
+irb(main):017:0* table.rows_with
+table.rows_with
+irb(main):017:0* table.rows_with_country("France")
+=> [#<Ruport::Data::Record:0x007fa6d3874368 @attributes=["country", "wine"], @data={"country"=>"France", "wine"=>"Bordeaux"}>]
+irb(main):018:0> table.rows_with_country("France").each do |row|
+irb(main):019:1*   puts row.to_csv
+irb(main):020:1> end
+France,Bordeaux
+=> [#<Ruport::Data::Record:0x007fa6d3874368 @attributes=["country", "wine"], @data={"country"=>"France", "wine"=>"Bordeaux"}>]
 ```
