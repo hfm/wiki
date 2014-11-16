@@ -343,3 +343,31 @@ irb(main):017:0> icecream.flavor
 => {"flavor"=>"バニラ"}
 ```
 
+### benchmark normalmethod vs ghostmethod
+
+```ruby
+2.1.5 (main)> require 'benchmark'
+ => true
+2.1.5 (main)> class String
+2.1.5 (main)>   def method_missing(method, *args)
+2.1.5 (main)>     method == :ghost_reverse ? reverse : super
+2.1.5 (main)>   end
+2.1.5 (main)> end
+ => :method_missing
+2.1.5 (main)> Benchmark.bm do |b|
+2.1.5 (main)>   b.report "Normal method" do
+2.1.5 (main)>     1000000.times { "abc".reverse }
+2.1.5 (main)>   end
+2.1.5 (main)>
+2.1.5 (main)>   b.report "Ghost method" do
+2.1.5 (main)>     1000000.times { "abc".ghost_reverse }
+2.1.5 (main)>   end
+2.1.5 (main)> end
+       user     system      total        real
+Normal method  0.280000   0.000000   0.280000 (  0.274860)
+Ghost method  0.420000   0.000000   0.420000 (  0.423145)
+ => [
+    [0] #<Benchmark::Tms:0x007fc44cb71908 @label="Normal method", @real=0.27486, @cstime=0.0, @cutime=0.0, @stime=0.0, @utime=0.27999999999999997, @total=0.27999999999999997>,
+    [1] #<Benchmark::Tms:0x007fc44caf21f8 @label="Ghost method", @real=0.423145, @cstime=0.0, @cutime=0.0, @stime=0.0, @utime=0.42000000000000004, @total=0.42000000000000004>
+]
+```
