@@ -238,3 +238,28 @@ irb(main):007:0> obj.my_method(3)
 irb(main):008:0> obj.send(:my_method, 3)
 => 6
 ```
+
+```irb
+irb(main):001:0> 1.send(:+, 3)
+=> 4
+```
+
+## override method_missing
+
+```irb
+irb(main):001:0> class Lawyer
+irb(main):002:1>   def method_missing(method, *args)
+irb(main):003:2>     puts "#{method}(#{args.join(',')})を呼び出した"
+irb(main):004:2>     puts "(ブロックを渡した)" if block_given?
+irb(main):005:2>   end
+irb(main):006:1> end
+=> :method_missing
+irb(main):007:0> bob = Lawyer.new
+=> #<Lawyer:0x007fa6d39b6320>
+irb(main):008:0> bob.talk_simple('a', 'b') do
+irb(main):009:1*   puts "talk!"
+irb(main):010:1> end
+talk_simple(a,b)を呼び出した
+(ブロックを渡した)
+=> nil
+```
