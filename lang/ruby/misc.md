@@ -263,3 +263,22 @@ talk_simple(a,b)を呼び出した
 (ブロックを渡した)
 => nil
 ```
+
+ruport
+
+```irb
+irb(main):011:0> require 'ruport'
+=> true
+irb(main):012:0> table = Ruport::Data::Table.new :column_names => ["country", "wine"],
+irb(main):013:0*                                 :data => [["France", "Bordeaux"],
+irb(main):014:1*                                           ["Italy", "Chianti"]]
+=> #<Ruport::Data::Table:0x007fa6d3874fe8 @column_names=["country", "wine"], @record_class="Ruport::Data::Record", @data=[#<Ruport::Data::Record:0x007fa6d3874368 @attributes=["country", "wine"], @data={"country"=>"France", "wine"=>"Bordeaux"}>, #<Ruport::Data::Record:0x007fa6d38738c8 @attributes=["country", "wine"], @data={"country"=>"Italy", "wine"=>"Chianti"}>]>
+irb(main):015:0> puts table.to_text
++--------------------+
+| country |   wine   |
++--------------------+
+| France  | Bordeaux |
+| Italy   | Chianti  |
++--------------------+
+=> nil
+```
