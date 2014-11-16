@@ -326,18 +326,6 @@ irb(main):003:2>     @attributes = {}
 irb(main):004:2>   end
 irb(main):005:1>
 irb(main):006:1*   def method_missing(name, *args)
-irb(main):007:2>     attributes = name.to_s
-irb(main):008:2>     if attributes ^C
-irb(main):008:0> ^C
-irb(main):008:0>
-hfm@giant [~] [2-0] [perl v5.21.2] [ruby 2.1.3p242] [python 2.7.8]
-$ irb
-irb(main):001:0> class MyOpenStruct
-irb(main):002:1>   def initialize
-irb(main):003:2>     @attributes = {}
-irb(main):004:2>   end
-irb(main):005:1>
-irb(main):006:1*   def method_missing(name, *args)
 irb(main):007:2>     attribute = name.to_s
 irb(main):008:2>     if attribute =~ /=$/
 irb(main):009:3>       @attributes[attribute.chop] = args[0]
