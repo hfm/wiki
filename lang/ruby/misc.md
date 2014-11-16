@@ -264,7 +264,7 @@ talk_simple(a,b)を呼び出した
 => nil
 ```
 
-ruport
+### ruport
 
 ```irb
 irb(main):011:0> require 'ruport'
@@ -310,7 +310,7 @@ France,Bordeaux
 => [#<Ruport::Data::Record:0x007fa6d3874368 @attributes=["country", "wine"], @data={"country"=>"France", "wine"=>"Bordeaux"}>]
 ```
 
-openstruct
+### openstruct
 
 ```irb
 irb(main):023:0> icecream = OpenStruct.new
