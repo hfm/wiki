@@ -371,3 +371,7 @@ Ghost method  0.420000   0.000000   0.420000 (  0.423145)
     [1] #<Benchmark::Tms:0x007fc44caf21f8 @label="Ghost method", @real=0.423145, @cstime=0.0, @cutime=0.0, @stime=0.0, @utime=0.42000000000000004, @total=0.42000000000000004>
 ]
 ```
+
+ブランクスレート
+
+- Objectクラスよりもメソッドの少ないクラスのこと（「メタプログラミングRuby」 P97）
