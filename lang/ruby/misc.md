@@ -309,3 +309,49 @@ irb(main):020:1> end
 France,Bordeaux
 => [#<Ruport::Data::Record:0x007fa6d3874368 @attributes=["country", "wine"], @data={"country"=>"France", "wine"=>"Bordeaux"}>]
 ```
+
+openstruct
+
+```irb
+irb(main):023:0> icecream = OpenStruct.new
+=> #<OpenStruct>
+irb(main):024:0> icecream.flavor = 'ストロベリー'
+=> "ストロベリー"
+irb(main):025:0> icecream.flavor
+=> "ストロベリー"
+
+irb(main):001:0> class MyOpenStruct
+irb(main):002:1>   def initialize
+irb(main):003:2>     @attributes = {}
+irb(main):004:2>   end
+irb(main):005:1>
+irb(main):006:1*   def method_missing(name, *args)
+irb(main):007:2>     attributes = name.to_s
+irb(main):008:2>     if attributes ^C
+irb(main):008:0> ^C
+irb(main):008:0>
+hfm@giant [~] [2-0] [perl v5.21.2] [ruby 2.1.3p242] [python 2.7.8]
+$ irb
+irb(main):001:0> class MyOpenStruct
+irb(main):002:1>   def initialize
+irb(main):003:2>     @attributes = {}
+irb(main):004:2>   end
+irb(main):005:1>
+irb(main):006:1*   def method_missing(name, *args)
+irb(main):007:2>     attribute = name.to_s
+irb(main):008:2>     if attribute =~ /=$/
+irb(main):009:3>       @attributes[attribute.chop] = args[0]
+irb(main):010:3>     else
+irb(main):011:3*       @attributes
+irb(main):012:3>     end
+irb(main):013:2>   end
+irb(main):014:1> end
+=> :method_missing
+irb(main):015:0> icecream = MyOpenStruct.new
+=> #<MyOpenStruct:0x007fbdf298b8d8 @attributes={}>
+irb(main):016:0> icecream.flavor = 'バニラ'
+=> "バニラ"
+irb(main):017:0> icecream.flavor
+=> {"flavor"=>"バニラ"}
+```
+
