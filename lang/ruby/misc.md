@@ -536,3 +536,13 @@ irb(main):072:0> another_my_method
 
 5になっちゃう（`p`がcallされた時点でスコープから抜け出すため，`return result * 2`に届いていない）
 
+### Kernel#proc
+
+```irb
+irb(main):078:0> proc { return }.call
+LocalJumpError: unexpected return
+	from (irb):78:in `block in irb_binding'
+	from (irb):78:in `call'
+	from (irb):78
+	from /Users/hfm/.rbenv/versions/2.1.5/bin/irb:11:in `<main>'
+```
