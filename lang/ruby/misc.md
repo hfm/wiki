@@ -417,3 +417,76 @@ irb(main):029:0> inc = Proc.new {|x| x + 1}
 irb(main):030:0> inc.call(3)
 => 4
 ```
+
+```irb
+irb(main):031:0> def math(a, b)
+irb(main):032:1>   yield(a, b)
+irb(main):033:1> end
+=> :math
+irb(main):034:0> def teach_math(a, b, &operation)
+irb(main):035:1>   puts "Let's start to culculation"
+irb(main):036:1>   puts math(a, b, &operation)
+irb(main):037:1> end
+=> :teach_math
+irb(main):038:0> teach_math(2, 3) {|x, y| x * y}
+Let's start to culculation
+6
+=> nil
+irb(main):039:0> teach_math(2, 3) {|x, y| x ** y}
+Let's start to culculation
+8
+=> nil
+irb(main):040:0> teach_math(2, 3)
+Let's start to culculation
+LocalJumpError: no block given (yield)
+	from (irb):32:in `math'
+	from (irb):36:in `teach_math'
+	from (irb):40
+	from /Users/hfm/.rbenv/versions/2.1.5/bin/irb:11:in `<main>'
+```
+
+```irb
+irb(main):041:0> def my_method(&the_proc)
+irb(main):042:1>   the_proc
+irb(main):043:1> end
+=> :my_method
+irb(main):044:0> my_method {|age| "I'm #{age}" }
+=> #<Proc:0x007f81628a3280@(irb):44>
+irb(main):045:0> age = my_method {|age| "I'm #{age}" }
+=> #<Proc:0x007f81630f1fe0@(irb):45>
+irb(main):046:0> age.class
+=> Proc
+irb(main):047:0> age.call(20)
+=> "I'm 20"
+```
+
+### proc to block
+
+```irb
+irb(main):048:0> my_age = proc { '20' }
+=> #<Proc:0x007f81630b3998@(irb):48>
+irb(main):049:0> def my_method(name)
+irb(main):050:1>   puts "#{name} is #{yield}"
+irb(main):051:1> end
+=> :my_method
+irb(main):053:0> my_method("Bob", &my_age)
+Bob is 20
+=> nil
+```
+
+- highlignはコンソールの入出力を自動化するgem
+
+```irb
+irb(main):054:0> require 'highline'
+=> true
+irb(main):055:0> hl = HighLine.new
+=> #<HighLine:0x007f81629e7588 @input=#<IO:<STDIN>>, @output=#<IO:<STDOUT>>, @multi_indent=true, @indent_size=3, @indent_level=0, @wrap_at=nil, @page_at=nil, @question=nil, @answer=nil, @menu=nil, @header=nil, @prompt=nil, @gather=nil, @answers=nil, @key=nil>
+irb(main):056:0> ages = hl.ask("Input your age", lambda {|age| age.split(',')})
+Input your age
+20,30,40
+=> ["20", "30", "40"]
+irb(main):057:0> ages
+=> ["20", "30", "40"]
+irb(main):058:0> ages.class
+=> Array
+```
