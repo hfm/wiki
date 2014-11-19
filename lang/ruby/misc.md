@@ -513,7 +513,13 @@ LocalJumpError: unexpected return
 	from (irb):60:in `my_method'
 	from (irb):65
 	from /Users/hfm/.rbenv/versions/2.1.5/bin/irb:11:in `<main>'
+irb(main):075:0> p = Proc.new { 5 }
+=> #<Proc:0x007f8163068ba0@(irb):75>
+irb(main):076:0> my_method(p)
+=> 10
 ```
+
+returnがあるとLocalJumpErrorで死ぬ（トップレベルスコープからは戻る場所が無い）
 
 #### return (part2: Proc)
 
