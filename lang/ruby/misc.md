@@ -375,3 +375,45 @@ Ghost method  0.420000   0.000000   0.420000 (  0.423145)
 ブランクスレート
 
 - Objectクラスよりもメソッドの少ないクラスのこと（「メタプログラミングRuby」 P97）
+
+## CleanRoom
+
+```irb
+irb(main):001:0> class CleanRoom
+irb(main):002:1>   def complex_calculation
+irb(main):003:2>     # some codes
+irb(main):004:2*     10
+irb(main):005:2>   end
+irb(main):006:1>
+irb(main):007:1*   def do_something
+irb(main):008:2>     # some codes
+irb(main):009:2*   end
+irb(main):010:1> end
+=> :do_something
+irb(main):011:0>
+irb(main):012:0* clean_room = CleanRoom.new
+=> #<CleanRoom:0x007f8162979470>
+irb(main):013:0> clean_room.instance_eval do
+irb(main):014:1*   if complex_calculation > 10
+irb(main):015:2>     do_something
+irb(main):016:2>   end
+irb(main):017:1> end
+=> nil
+irb(main):023:0> clean_room.instance_eval do
+irb(main):024:1*   if complex_calculation > 9
+irb(main):025:2>     do_something
+irb(main):026:2>     puts "over 9"
+irb(main):027:2>   end
+irb(main):028:1> end
+over 9
+=> nil
+```
+
+## Proc
+
+```irb
+irb(main):029:0> inc = Proc.new {|x| x + 1}
+=> #<Proc:0x007f81630da8e0@(irb):29>
+irb(main):030:0> inc.call(3)
+=> 4
+```
