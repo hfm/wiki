@@ -490,3 +490,43 @@ irb(main):057:0> ages
 irb(main):058:0> ages.class
 => Array
 ```
+
+### proc vs lambda
+
+#### return (part1: lambda)
+
+```irb
+irb(main):059:0> def my_method(object)
+irb(main):060:1>   object.call * 2
+irb(main):061:1> end
+=> :my_method
+irb(main):062:0> l = lambda { return 5 }
+=> #<Proc:0x007f81648ea458@(irb):62 (lambda)>
+irb(main):063:0> my_method(l)
+=> 10
+irb(main):064:0> p = Proc.new { return 5 }
+=> #<Proc:0x007f81648d5620@(irb):64>
+irb(main):065:0> my_method(p)
+LocalJumpError: unexpected return
+	from (irb):64:in `block in irb_binding'
+	from (irb):60:in `call'
+	from (irb):60:in `my_method'
+	from (irb):65
+	from /Users/hfm/.rbenv/versions/2.1.5/bin/irb:11:in `<main>'
+```
+
+#### return (part2: Proc)
+
+```irb
+irb(main):067:0* def another_my_method
+irb(main):068:1>   p = Proc.new { return 5 }
+irb(main):069:1>   result = p.call
+irb(main):070:1>   return result * 2
+irb(main):071:1> end
+=> :another_my_method
+irb(main):072:0> another_my_method
+=> 5
+```
+
+5になっちゃう
+
