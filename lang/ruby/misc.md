@@ -528,5 +528,5 @@ irb(main):072:0> another_my_method
 => 5
 ```
 
-5になっちゃう
+5になっちゃう（`p`がcallされた時点でスコープから抜け出すため，`return result * 2`に届いていない）
 
