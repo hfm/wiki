@@ -546,3 +546,56 @@ LocalJumpError: unexpected return
 	from (irb):78
 	from /Users/hfm/.rbenv/versions/2.1.5/bin/irb:11:in `<main>'
 ```
+
+### method
+
+```irb
+irb(main):001:0> class MyClass
+irb(main):002:1>   def initialize(value)
+irb(main):003:2>     @x = value
+irb(main):004:2>   end
+irb(main):005:1>
+irb(main):006:1*   def my_method
+irb(main):007:2>     @x
+irb(main):008:2>   end
+irb(main):009:1> end
+=> :my_method
+```
+
+↑で普通のクラスを作って，↓でMethodオブジェクトを取り出す．
+
+```irb
+irb(main):011:0> object = MyClass.new(1)
+=> #<MyClass:0x007ff16a834bf0 @x=1>
+irb(main):012:0> m = object.method :my_method
+=> #<Method: MyClass#my_method>
+irb(main):013:0> m.call
+=> 1
+irb(main):014:0> m.class
+=> Method
+```
+
+Methodオブジェクトは属するオブジェクトのスコープで評価される．
+
+また，unbindで`UnboundMethod`オブジェクトを取り出し，UnboundMethodオブジェクトに再びbindすることも出来る．
+
+```irb
+irb(main):021:0* unbound = m.unbind
+=> #<UnboundMethod: MyClass#my_method>
+irb(main):022:0> another_object = MyClass.new(2)
+=> #<MyClass:0x007ff16b041fa0 @x=2>
+irb(main):023:0> m = unbound.bind(another_object)
+=> #<Method: MyClass#my_method>
+irb(main):024:0> m.call
+=> 2
+```
+
+ただし，元のオブジェクトと同じクラスにしか使えず，別のクラスをbind
+
+```irb
+irb(main):037:0> m = unbound.bind(another_object)
+TypeError: bind argument must be an instance of MyClass
+	from (irb):37:in `bind'
+	from (irb):37
+	from /Users/hfm/.rbenv/versions/2.1.5/bin/irb:11:in `<main>'
+```
