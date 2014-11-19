@@ -590,7 +590,7 @@ irb(main):024:0> m.call
 => 2
 ```
 
-ただし，元のオブジェクトと同じクラスにしか使えず，別のクラスをbind
+ただし，元のオブジェクトと同じクラスにしか使えず，別のクラスをbindしようとするとTypeErrorが生じた．
 
 ```irb
 irb(main):037:0> m = unbound.bind(another_object)
