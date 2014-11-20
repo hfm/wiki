@@ -599,3 +599,37 @@ TypeError: bind argument must be an instance of MyClass
 	from (irb):37
 	from /Users/hfm/.rbenv/versions/2.1.5/bin/irb:11:in `<main>'
 ```
+
+## method
+
+### class method
+
+`class << self`するとclassメソッド使えた．
+http://magazine.rubyist.net/?0046-SingletonClassForBeginners#l3
+
+```irb
+irb(main):001:0> class Clazz
+irb(main):002:1>   class << self
+irb(main):003:2>     def hello
+irb(main):004:3>       puts "hello world"
+irb(main):005:3>     end
+irb(main):006:2>   end
+irb(main):007:1> end
+=> :hello
+irb(main):008:0> Clazz.hello
+hello world
+=> nil
+irb(main):009:0> Clazz.hello
+hello world
+=> nil
+irb(main):010:0> class Clazzz
+irb(main):011:1>   def hello
+irb(main):012:2>     puts "hello world"
+irb(main):013:2>   end
+irb(main):014:1> end
+=> :hello
+irb(main):015:0> Clazzz.hello
+NoMethodError: undefined method `hello' for Clazzz:Class
+	from (irb):15
+	from /Users/usr0600296/.rbenv/versions/2.1.4/bin/irb:11:in `<main>'
+```
