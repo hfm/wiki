@@ -746,3 +746,75 @@ Finished in 0.001332s, 750.7508 runs/s, 750.7508 assertions/s.
 1 runs, 1 assertions, 0 failures, 0 errors, 0 skips
 ```
 
+### Class.new
+
+```irb
+irb(main):001:0> c = Class.new(Array) do
+irb(main):002:1*   def my_method
+irb(main):003:2>     'Hello!'
+irb(main):004:2>   end
+irb(main):005:1> end
+=> #<Class:0x007f850b080ce0>
+irb(main):006:0> MyClass = c
+=> MyClass
+irb(main):007:0> MyClass.new.my_method
+=> "Hello!"
+```
+
+## specific method
+
+### singleton method
+
+```irb
+irb(main):008:0> str = 'just a regular string'
+=> "just a regular string"
+irb(main):009:0> def str.title?
+irb(main):010:1>   self.upcase == self
+irb(main):011:1> end
+=> :title?
+irb(main):012:0> str.title?
+=> false
+irb(main):014:0> str.methods.grep /title?/
+=> [:title?]
+irb(main):015:0> str.singleton_methods
+=> [:title?]
+```
+
+## Class macro
+
+### attr_accessor
+
+ミミックメソッドとattr_accessorを比べてみる
+
+```irb
+irb(main):001:0> class MyClass
+irb(main):002:1>   def my_attribute=(value)
+irb(main):003:2>     @my_attribute = value
+irb(main):004:2>   end
+irb(main):005:1>
+irb(main):006:1*   def my_attribute
+irb(main):007:2>     @my_attribute
+irb(main):008:2>   end
+irb(main):009:1> end
+=> :my_attribute
+irb(main):010:0> object = MyClass.new
+=> #<MyClass:0x007fb321992e98>
+irb(main):011:0> object.my_attribute = 'x'
+=> "x"
+irb(main):012:0> object.my_attribute
+=> "x"
+```
+
+```irb
+irb(main):001:0> class MyClass
+irb(main):002:1>   attr_accessor :my_attribute
+irb(main):003:1> end
+=> nil
+irb(main):004:0> object = MyClass.new
+=> #<MyClass:0x007fa3628b7e20>
+irb(main):005:0> object.my_attribute = 'x'
+=> "x"
+irb(main):006:0> object.my_attribute
+=> "x"
+```
+
