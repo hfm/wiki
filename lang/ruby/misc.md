@@ -633,3 +633,65 @@ NoMethodError: undefined method `hello' for Clazzz:Class
 	from (irb):15
 	from /Users/usr0600296/.rbenv/versions/2.1.4/bin/irb:11:in `<main>'
 ```
+
+### class instance variables
+
+```irb
+irb(main):001:0> class MyCLass
+irb(main):002:1>   @my_var = 1
+irb(main):003:1> end
+=> 1
+```
+
+```irb
+irb(main):004:0> class MyClass
+irb(main):005:1>   @my_var = 1
+irb(main):006:1>
+irb(main):007:1*   def self.read
+irb(main):008:2>     @my_var
+irb(main):009:2>   end
+irb(main):010:1>
+irb(main):011:1*   def write
+irb(main):012:2>     @my_var = 2
+irb(main):013:2>   end
+irb(main):014:1>
+irb(main):015:1*   def read
+irb(main):016:2>    @my_var
+irb(main):017:2>   end
+irb(main):018:1> end
+=> :read
+irb(main):019:0> object = MyClass.new
+=> #<MyClass:0x007ff80287f440>
+irb(main):020:0> object.read
+=> nil
+irb(main):021:0> object.write
+=> 2
+irb(main):022:0> object.read
+=> 2
+irb(main):024:0> MyClass.read
+=> 1
+```
+
+#### class variables
+
+```irb
+irb(main):038:0> class MyClass3rd < MyClass2nd
+irb(main):039:1>   def my_method
+irb(main):040:2>     @@var
+irb(main):041:2>   end
+irb(main):042:1> end
+=> :my_method
+irb(main):043:0> MyClass3rd.new.my_method
+=> 1
+irb(main):044:0> class MyClass4st < MyClass3rd
+irb(main):045:1>   @@var = 2
+irb(main):046:1> end
+=> 2
+irb(main):047:0> MyClass3rd.new.my_method
+=> 2
+irb(main):050:0> MyClass4st.new.my_method
+=> 2
+```
+
+クラス変数はクラスではなくクラス階層に属していることが分かる．
+
