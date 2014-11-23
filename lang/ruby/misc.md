@@ -909,3 +909,58 @@ irb(main):021:0> object.eigenclass.superclass
                +--------------------+
 出典：「メタプログラミングRuby」p.162 図4-4 メソッド探索と特異クラスより
 ```
+
+## eigenclass and inheritance
+
+```irb
+irb(main):001:0> class C
+irb(main):002:1>   class << self
+irb(main):003:2>     def a_class_method
+irb(main):004:3>       'C.a_class_method()'
+irb(main):005:3>     end
+irb(main):006:2>   end
+irb(main):007:1> end
+=> :a_class_method
+irb(main):008:0> class Object
+irb(main):009:1>   def eigenclass
+irb(main):010:2>     class << self
+irb(main):011:3>       self
+irb(main):012:3>     end
+irb(main):013:2>   end
+irb(main):014:1> end
+=> :eigenclass
+irb(main):015:0> C.eigenclass
+=> #<Class:C>
+irb(main):016:0> class D < C; end
+=> nil
+irb(main):017:0> D.eigenclass
+=> #<Class:D>
+irb(main):018:0> D.eigenclass.superclass
+=> #<Class:C>
+irb(main):019:0> C.eigenclass.superclass
+=> #<Class:Object>
+```
+
+```
+                     +----------+     +----------------+
+                     |  Object  | --> |     #Object    |
+                     +----------+     +----------------+
+                          ^s                  ^s
+                     +----------+     +----------------+
+                     |    C     |     |       #C       |
+                     + -------- + --> + -------------- +
+                     | a_method |     | a.class_method |
+                     +----------+     +----------------+
+                          ^s                  ^s
+                        +---+       c       +----+
+                        | D | ------------> | #D |
+                        +---+               +----+
+                          ^s
+               +--------------------+      s: superclass
++--------+     |       #object      |      c: (eigen)class
+| object | --> + ------------------ +
++--------+     | a_singleton_method |
+               +--------------------+
+出典：「メタプログラミングRuby」p.163 図4-5 クラスの特異クラス
+```
+
