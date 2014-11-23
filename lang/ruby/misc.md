@@ -697,7 +697,7 @@ irb(main):050:0> MyClass4st.new.my_method
 
 ## minitest
 
-```irb
+```rb
 class Loan
   def initialize(book)
     @book = book
@@ -714,7 +714,7 @@ class Loan
 end
 ```
 
-```irb
+```rb
 class FakeTime
   def self.now
     'Sun Nov 23 18:19:00'
