@@ -761,9 +761,7 @@ irb(main):007:0> MyClass.new.my_method
 => "Hello!"
 ```
 
-## specific method
-
-### singleton method
+## singleton method
 
 ```irb
 irb(main):008:0> str = 'just a regular string'
@@ -840,3 +838,74 @@ Warning: GetTitle() is deprecated. Use title().
 => nil
 ```
 
+```irb
+irb(main):001:0> object = Object.new
+=> #<Object:0x007ff3b41a34c0>
+irb(main):002:0> eigenclass = class << object
+irb(main):003:1>   self
+irb(main):004:1> end
+=> #<Class:#<Object:0x007ff3b41a34c0>>
+irb(main):005:0> eigenclass.class
+=> Class
+irb(main):006:0> def object.my_singleton
+irb(main):007:1> end
+=> :my_singleton
+irb(main):009:0> eigenclass.instance_methods.grep /my_/
+=> [:my_singleton]
+```
+
+### eigenclass 
+
+```irb
+irb(main):001:0> class C
+irb(main):002:1>   def a_method
+irb(main):003:2>     'C#a_method()'
+irb(main):004:2>   end
+irb(main):005:1> end
+=> :a_method
+irb(main):006:0> class D < C; end
+=> nil
+irb(main):007:0> object = D.new
+=> #<D:0x007fd0728968a0>
+irb(main):008:0> class << object
+irb(main):009:1>   def a_singleton_method
+irb(main):010:2>     'object#a_singleton_method()'
+irb(main):011:2>   end
+irb(main):012:1> end
+=> :a_singleton_method
+irb(main):013:0> class Object
+irb(main):014:1>   def eigenclass
+irb(main):015:2>     class << self
+irb(main):016:3>       self
+irb(main):017:3>     end
+irb(main):018:2>   end
+irb(main):019:1> end
+=> :eigenclass
+irb(main):020:0> object.eigenclass
+=> #<Class:#<D:0x007fd0728968a0>>
+irb(main):021:0> object.eigenclass.superclass
+=> D
+```
+
+```
+                     +----------+
+                     |  Object  |
+                     +----------+
+                          ^
+                     +----------+
+                     |    C     |
+                     + -------- +
+                     | a_method |
+                     +----------+
+                          ^
+                        +---+
+                        | D |
+                        +---+
+                          ^
+               +--------------------+
++--------+     |       #object      |
+| object | --> + ------------------ +
++--------+     | a_singleton_method |
+               +--------------------+
+出典：「メタプログラミングRuby」p.162 図4-4 メソッド探索と特異クラスより
+```
