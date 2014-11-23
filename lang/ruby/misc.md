@@ -695,3 +695,40 @@ irb(main):050:0> MyClass4st.new.my_method
 
 クラス変数はクラスではなくクラス階層に属していることが分かる．
 
+## minitest
+
+```irb
+class Loan
+  def initialize(book)
+    @book = book
+    @time = Loan.time_class.now
+  end
+
+  def self.time_class
+    @time_class || Time
+  end
+
+  def to_s
+    "#{@book.upcase} loaned on #{@time}"
+  end
+end
+```
+
+```irb
+class FakeTime
+  def self.now
+    'Sun Nov 23 18:19:00'
+  end
+end
+
+require_relative 'book'
+require 'minitest/autorun'
+
+class TestLoan < Minitest::Test
+  def test_conversion_to_string
+    Loan.instance_eval { @time_class = FakeTime }
+    loan = Loan.new('War and Peace')
+    assert_equal 'WAR AND PEACE loaned on Sun Nov 23 18:19:00', loan.to_s
+  end
+end
+```
