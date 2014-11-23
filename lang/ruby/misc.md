@@ -818,3 +818,25 @@ irb(main):006:0> object.my_attribute
 => "x"
 ```
 
+## deprecate method
+
+```irb
+irb(main):014:0> class MyClass
+irb(main):015:1>   def self.deprecate(old_method, new_method)
+irb(main):016:2>     define_method(old_method) do |*args, &block|
+irb(main):017:3*       warn "Warning: #{old_method}() is deprecated. Use #{new_method}()."
+irb(main):018:3>       send(new_method, *args, &block)
+irb(main):019:3>     end
+irb(main):020:2>   end
+irb(main):021:1>
+irb(main):022:1*   def title
+irb(main):023:2>   end
+irb(main):024:1>
+irb(main):025:1*   deprecate :GetTitle, :title
+irb(main):026:1> end
+=> :GetTitle
+irb(main):027:0> MyClass.new.GetTitle
+Warning: GetTitle() is deprecated. Use title().
+=> nil
+```
+
