@@ -1316,3 +1316,19 @@ irb(main):008:0> b = MyClass.new.my_method
 => #<Binding:0x007fe65a9df380>
 ```
 
+## hook method
+
+- Class#inherited()はデフォルトでは何もしない
+
+```irb
+irb(main):001:0> class String
+irb(main):002:1>   def self.inherited(subclass)
+irb(main):003:2>     puts "#{self} inherited #{subclass}"
+irb(main):004:2>   end
+irb(main):005:1> end
+=> :inherited
+irb(main):006:0> class MyString < String; end
+String inherited MyString
+=> nil
+```
+
