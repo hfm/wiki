@@ -1355,6 +1355,21 @@ M included in C
 => C
 ```
 
+```irb
+irb(main):001:0> module M; end
+=> nil
+irb(main):002:0> class C
+irb(main):003:1>   def self.include(*modules)
+irb(main):004:2>     puts "Called: C.include(#{modules})"
+irb(main):005:2>     super
+irb(main):006:2>   end
+irb(main):007:1>
+irb(main):008:1*   include M
+irb(main):009:1> end
+Called: C.include([M])
+=> C
+```
+
 ### Module#extend_object()
 
 - Module#method_added()
@@ -1372,3 +1387,5 @@ irb(main):012:1> end
 New method: M#my_method
 => :my_method
 ```
+
+### 
