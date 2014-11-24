@@ -1388,4 +1388,19 @@ New method: M#my_method
 => :my_method
 ```
 
-### 
+
+クラス拡張ミックスイン．
+
+```irb
+irb(main):001:0> module MyMixin
+irb(main):002:1>   def self.included(base)
+irb(main):003:2>     base.extend(ClassMethods)
+irb(main):004:2>   end
+irb(main):005:1>
+irb(main):006:1*   module ClassMethods
+irb(main):007:2>   def x
+irb(main):008:3>     "x()"
+irb(main):009:3>   end
+irb(main):010:2> end
+=> :x
+```
