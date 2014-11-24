@@ -1004,3 +1004,39 @@ NoMethodError: undefined method `my_method' for MyClass:Class
 	from (irb):11
 	from /Users/hfm/.rbenv/versions/2.1.5/bin/irb:11:in `<main>'
 ```
+
+- MyClassの特異クラスのインスタンスメソッド`my_method`は，MyClassのクラスメソッドである．
+  - クラス拡張と呼ばれる技術
+
+### Object#extend
+
+```irb
+irb(main):001:0> module MyModule
+irb(main):002:1>   def my_method
+irb(main):003:2>     'hello'
+irb(main):004:2>     end
+irb(main):005:1>   ned
+irb(main):006:1>   end
+NameError: undefined local variable or method `ned' for MyModule:Module
+	from (irb):5:in `<module:MyModule>'
+	from (irb):1
+	from /Users/hfm/.rbenv/versions/2.1.5/bin/irb:11:in `<main>'
+irb(main):007:0> module MyModule
+irb(main):008:1>   def my_method
+irb(main):009:2>     'hell'
+irb(main):010:2>     end
+irb(main):011:1>   end
+=> :my_method
+irb(main):012:0> object = Object.new
+=> #<Object:0x007ffb9b87a818>
+irb(main):013:0> object.extend MyModule
+=> #<Object:0x007ffb9b87a818>
+irb(main):014:0> object.my_method
+=> "hell"
+irb(main):015:0> class MyClass
+irb(main):016:1>   extend MyModule
+irb(main):017:1>   end
+=> MyClass
+irb(main):018:0> MyClass.my_method
+=> "hell"
+```
