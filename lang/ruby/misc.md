@@ -1187,6 +1187,7 @@ class TestCheckedAttribute < Test::Unit::TestCase
   end
 end
 
+# use eval()
 def add_checked_attribute(clazz, attribute)
   eval "
     class #{clazz}
@@ -1200,6 +1201,20 @@ def add_checked_attribute(clazz, attribute)
       @#{attribute}
     end
   "
+end
+
+# use class_eval
+def add_checked_attribute(clazz, attribute)
+  clazz.class_eval do
+    define_method "#{attribute}=" do |value|
+      raise 'Invalid attribute' unless value
+      instance_variable_set("@#{attrubite}", value)
+    end
+
+    define_method "#{attribute}" do
+      instance_variable_get "@#{attrubite}"
+    end
+  end
 end
 ```
 
