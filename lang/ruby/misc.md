@@ -1088,3 +1088,24 @@ module Kernel
   ...
 end
 ```
+
+### private and alias
+
+```irb
+irb(main):028:0> class C
+irb(main):029:1>   def x; 'OK'; end
+irb(main):030:1>
+irb(main):031:1*   alias :y :x
+irb(main):032:1>   private :x
+irb(main):033:1> end
+=> C
+irb(main):034:0> C.new.y
+=> "OK"
+irb(main):035:0> C.new.x
+NoMethodError: private method `x' called for #<C:0x007ffb9d84d618>
+	from (irb):35
+	from /Users/hfm/.rbenv/versions/2.1.5/bin/irb:11:in `<main>'
+```
+
+- around aliasはいわゆるモンキーパッチで，既存のコードを壊す可能性があるので注意
+- around aliasは２度読み込むと，メソッド呼び出し時に例外が発生する可能性がある
