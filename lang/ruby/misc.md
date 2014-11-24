@@ -1059,3 +1059,32 @@ irb(main):026:0> 'War and Peace'.length
 irb(main):027:0> 'War and Peace'.real_length
 => 13
 ```
+
+## around alias
+
+- sample:
+  - https://github.com/rubygems/rubygems/blob/v1.3.3/lib/rubygems/custom_require.rb
+
+`gem_original_require`というaliasで元の`require`を呼び出せるようにしている．
+で，再定義した`require`の最初で`gem_original_require`を呼び出し，ダメならrescueで拾う．なるほど．
+
+```rb
+module Kernel
+  ...
+  alias gem_original_require require
+  ...
+
+  def require(path) # :doc:
+    gem_original_require path
+  rescue LoadError => load_error
+    if load_error.message =~ /#{Regexp.escape path}\z/ and
+       spec = Gem.searcher.find(path) then
+      Gem.activate(spec.name, "= #{spec.version}")
+      gem_original_require path
+    else
+      raise load_error
+    end
+  end
+  ...
+end
+```
