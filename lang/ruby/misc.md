@@ -979,3 +979,23 @@ irb(main):019:0> C.eigenclass.superclass
 1. すべてのクラスはスーパークラスを持っている．ただし，BasicObjectにはスーパークラスは無い．あらゆるクラスがBasicObjectに向かって1本の継承チェーンを持っている．
 1. オブジェクトの特異クラスのスーパークラスは，オブジェクトのクラスである．クラスの特異クラスのスーパークラスはクラスのスーパークラスの特異クラスである．
 1. メソッドを呼び出す時，Rubyはレシーバの本物のクラスに向かって「右へ」進み，継承チェーンを「上へ」進む．
+
+## module and eigenclass
+
+```irb
+irb(main):002:1>   def self.my_method
+irb(main):003:2>     'hello'
+irb(main):004:2>     end
+irb(main):005:1>   end
+=> :my_method
+irb(main):006:0> class MyClass
+irb(main):007:1>   class << self
+irb(main):008:2>     include MyModule
+irb(main):009:2>     end
+irb(main):010:1>   end
+=> #<Class:MyClass>
+irb(main):011:0> MyClass.my_method
+NoMethodError: undefined method `my_method' for MyClass:Class
+	from (irb):11
+	from /Users/hfm/.rbenv/versions/2.1.5/bin/irb:11:in `<main>'
+```
