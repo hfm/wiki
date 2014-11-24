@@ -600,6 +600,10 @@ TypeError: bind argument must be an instance of MyClass
 	from /Users/hfm/.rbenv/versions/2.1.5/bin/irb:11:in `<main>'
 ```
 
+## class definition
+
+rubyにおいて，classキーワードは，オブジェクトの動作を規定することではなくコードを実行すること．
+
 ## method
 
 ### class method
