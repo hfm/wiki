@@ -1155,22 +1155,6 @@ irb(main):014:0> arr
 => ["a", "b", "c"]
 ```
 
-## Binding
-
-```irb
-n):001:0> class MyClass
-irb(main):002:1>   def my_method
-irb(main):003:2>     @x = 1
-irb(main):004:2>     binding
-irb(main):005:2>     end
-irb(main):006:1>   end
-=> :my_method
-irb(main):007:0> MyClass.new.my_method
-=> #<Binding:0x007fe65a9a1da0>
-irb(main):008:0> b = MyClass.new.my_method
-=> #<Binding:0x007fe65a9df380>
-```
-
 ### test
 
 ```ruby
@@ -1218,3 +1202,20 @@ def add_checked_attribute(clazz, attribute)
   "
 end
 ```
+
+## Binding
+
+```irb
+n):001:0> class MyClass
+irb(main):002:1>   def my_method
+irb(main):003:2>     @x = 1
+irb(main):004:2>     binding
+irb(main):005:2>     end
+irb(main):006:1>   end
+=> :my_method
+irb(main):007:0> MyClass.new.my_method
+=> #<Binding:0x007fe65a9a1da0>
+irb(main):008:0> b = MyClass.new.my_method
+=> #<Binding:0x007fe65a9df380>
+```
+
