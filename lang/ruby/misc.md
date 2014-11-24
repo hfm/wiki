@@ -990,14 +990,14 @@ irb(main):019:0> C.eigenclass.superclass
 irb(main):001:1> module MyModule
 irb(main):002:1>   def self.my_method
 irb(main):003:2>     'hello'
-irb(main):004:2>     end
-irb(main):005:1>   end
+irb(main):004:2>   end
+irb(main):005:1> end
 => :my_method
 irb(main):006:0> class MyClass
 irb(main):007:1>   class << self
 irb(main):008:2>     include MyModule
-irb(main):009:2>     end
-irb(main):010:1>   end
+irb(main):009:2>   end
+irb(main):010:1> end
 => #<Class:MyClass>
 irb(main):011:0> MyClass.my_method
 NoMethodError: undefined method `my_method' for MyClass:Class
