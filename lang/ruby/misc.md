@@ -1144,6 +1144,17 @@ irb(main):010:0> eval("[10, 20] << 30")
 => [10, 20, 30]
 ```
 
+### eval family: instance_eval
+
+```irb
+irb(main):012:0> arr = ['a', 'b']
+=> ["a", "b"]
+irb(main):013:0> arr.instance_eval "self[2] = 'c'"
+=> "c"
+irb(main):014:0> arr
+=> ["a", "b", "c"]
+```
+
 ## Binding
 
 ```irb
