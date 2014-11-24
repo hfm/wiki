@@ -1040,3 +1040,22 @@ irb(main):017:1>   end
 irb(main):018:0> MyClass.my_method
 => "hell"
 ```
+
+## alias
+
+- aliasを使えば再定義されたメソッドの，元のメソッドも呼び出せる
+
+```irb
+irb(main):019:0> class String
+irb(main):020:1>   alias :real_length :length
+irb(main):021:1>
+irb(main):022:1*   def length
+irb(main):023:2>     real_length > 5 ? 'long' : 'short'
+irb(main):024:2>   end
+irb(main):025:1> end
+=> :length
+irb(main):026:0> 'War and Peace'.length
+=> "long"
+irb(main):027:0> 'War and Peace'.real_length
+=> 13
+```
