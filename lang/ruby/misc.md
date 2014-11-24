@@ -987,6 +987,7 @@ irb(main):019:0> C.eigenclass.superclass
   - クラスメソッドはモジュールの特異クラスの中にいる
 
 ```irb
+irb(main):001:1> module MyModule
 irb(main):002:1>   def self.my_method
 irb(main):003:2>     'hello'
 irb(main):004:2>     end
