@@ -1109,3 +1109,27 @@ NoMethodError: private method `x' called for #<C:0x007ffb9d84d618>
 
 - around aliasはいわゆるモンキーパッチで，既存のコードを壊す可能性があるので注意
 - around aliasは２度読み込むと，メソッド呼び出し時に例外が発生する可能性がある
+
+### custom Fixnum#+()
+
+メタプログラミングRuby p176のテストコードを書いてみたけど，test-unit使ってテストしようとすると，test-unit中のFixnumが壊れてテスト出来ない...とほほ
+
+```ruby
+class Fixnum
+  alias :old_plus :+
+
+  def +(value)
+    self.old_plus(value).old_plus(1)
+  end
+end
+
+require 'test/unit'
+
+class TestBrokenPlus < Test::Unit::TestCase
+  def test_broken_plus
+    assert_equal 3, 1 + 1
+    assert_equal 1, -1 + 1
+    assert_equal 110, 100 + 10
+  end
+end
+```
