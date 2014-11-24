@@ -1318,6 +1318,8 @@ irb(main):008:0> b = MyClass.new.my_method
 
 ## hook method
 
+### Class#inherited()
+
 - Class#inherited()はデフォルトでは何もしない
 
 ```irb
@@ -1332,3 +1334,41 @@ String inherited MyString
 => nil
 ```
 
+### Module#included()
+
+```irb
+irb(main):001:0> module M
+irb(main):002:1>   def self.included(mod)
+irb(main):003:2>     puts "#{self} included in #{mod}"
+irb(main):004:2>     end
+irb(main):005:1>   end
+=> :included
+irb(main):006:0> module Enumerable
+irb(main):007:1>   include M
+irb(main):008:1>   end
+M included in Enumerable
+=> Enumerable
+irb(main):009:0> class C
+irb(main):010:1>   include M
+irb(main):011:1>   end
+M included in C
+=> C
+```
+
+### Module#extend_object()
+
+- Module#method_added()
+- Module#method_removed()
+- Module#method_undefined()
+
+```irb
+irb(main):006:0> module M
+irb(main):007:1>   def self.method_added(method)
+irb(main):008:2>     puts "New method: M##{method}"
+irb(main):009:2>   end
+irb(main):010:1>
+irb(main):011:1*   def my_method; end
+irb(main):012:1> end
+New method: M#my_method
+=> :my_method
+```
