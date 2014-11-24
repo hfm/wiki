@@ -1133,3 +1133,29 @@ class TestBrokenPlus < Test::Unit::TestCase
   end
 end
 ```
+
+
+## eval
+
+```irb
+irb(main):009:0> eval "@x", b
+=> 1
+irb(main):010:0> eval("[10, 20] << 30")
+=> [10, 20, 30]
+```
+
+## Binding
+
+```irb
+n):001:0> class MyClass
+irb(main):002:1>   def my_method
+irb(main):003:2>     @x = 1
+irb(main):004:2>     binding
+irb(main):005:2>     end
+irb(main):006:1>   end
+=> :my_method
+irb(main):007:0> MyClass.new.my_method
+=> #<Binding:0x007fe65a9a1da0>
+irb(main):008:0> b = MyClass.new.my_method
+=> #<Binding:0x007fe65a9df380>
+```
