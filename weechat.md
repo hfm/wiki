@@ -139,6 +139,19 @@ tmux上で起動しても大丈夫。
 
 `/key bind ctrl-g /go`ではなく`/key bind ctrl-G /go`でやる。
 
+### バッファクリア
+
+zncのバッファを削除するには以下のコマンドを入力する
+
+```
+/msg *status clearbuffer <channel>
+```
+
+サーバの全チャンネルのバッファを消したいとき
+
+```
+/msg *status clearallchannelbuffers
+```
 ## atig.rb
 
 - chanmonに要らないやつ
