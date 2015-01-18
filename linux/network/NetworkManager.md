@@ -25,3 +25,4 @@
 - BIOSから論理番号が取得できないとPCIの物理的な場所，すなわちバスとスロット番号で割り当てられる
   - `p<Bus>s<Slot>`
   - enp1s1とか
+  - vagrantでcentos7の箱作った時は`/etc/sysconfig/network-scripts/ifcfg-enp0s3`となっていた．
